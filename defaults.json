@@ -1,0 +1,49 @@
+{
+  "template": "healing-buds-video",
+  "fontFamily": "inter",
+  "headingFontFamily": "playfair",
+  "fontSize": "medium",
+  "primaryColor": "#059669",
+  "secondaryColor": "#10b981",
+  "accentColor": "#34d399",
+  "backgroundColor": "#ffffff",
+  "textColor": "#1f2937",
+  "headingColor": "#111827",
+  "buttonStyle": "rounded",
+  "buttonSize": "medium",
+  "borderRadius": "medium",
+  "shadowStyle": "soft",
+  "spacing": "normal",
+  "heroType": "video",
+  "heroVideoUrl": "/hero-video.mp4",
+  "heroImagePath": null,
+  "logoPath": null,
+  "tagline": "Pioneering tomorrow's medical cannabis solutions",
+  "contactEmail": "info@healingbuds.com",
+  "contactPhone": "+351 289 123 456",
+  "address": "Healing Buds Global\\nAv. Fco. Sá Carneiro\\nEdf. Golfinho\\nLj. 3, Quarteira\\nFaro\\n8125-148\\nPortugal",
+  "socialLinks": {
+    "facebook": "",
+    "instagram": "",
+    "twitter": "",
+    "linkedin": ""
+  },
+  "pageContent": {
+    "home": {
+      "heroTitle": "Welcome to Your Medical Cannabis Journey",
+      "heroSubtitle": "Premium medical cannabis products delivered with care",
+      "heroCtaText": "Get Started"
+    },
+    "about": {
+      "title": "About Us",
+      "content": "Committed to excellence in every product we create and championing worldwide cannabis acceptance through quality and integrity."
+    },
+    "contact": {
+      "title": "Get in Touch",
+      "description": "Have questions? We are here to help.",
+      "email": "",
+      "phone": "",
+      "address": ""
+    }
+  }
+}
