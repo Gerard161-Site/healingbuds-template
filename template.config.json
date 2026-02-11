@@ -1,43 +1,60 @@
 {
-  "id": "healing-buds-video",
-  "name": "Healing Buds Video Hero",
+  "id": "healingbuds",
+  "slug": "healingbuds",
+  "name": "Healing Buds",
+  "description": "Premium medical cannabis template with sage-teal color palette, rich design system, and pharmaceutical-grade aesthetic. Features Plus Jakarta Sans typography, smooth animations, and WCAG AA accessibility.",
   "version": "2.0.0",
-  "author": "Healing Buds Design Team",
-  "description": "Immersive full-screen video hero with parallax scrolling and comprehensive design system. Perfect for medical cannabis brands seeking a modern, premium aesthetic with consistent branding across all pages.",
+  "type": "data-only",
+  "author": "BudStack Platform",
   "category": "medical",
-  "tags": ["video", "parallax", "modern", "medical", "premium", "design-system", "accessible"],
-  "created_at": "2025-11-24",
-  "updated_at": "2025-11-25",
-  "preview_image": "/templates/healing-buds-video/preview.jpg",
-  "compatibility": {
-    "platform_version": "2.0+",
-    "nextjs_version": "14.x",
-    "react_version": "18.x",
-    "requires_features": ["hero-video", "consultation-booking", "design-system"]
-  },
-  "features": {
-    "hero_video": true,
-    "parallax_scrolling": true,
-    "scroll_animations": true,
-    "design_system": true,
-    "dark_mode": false,
-    "multi_language": false,
-    "responsive": true,
-    "accessible": true
-  },
-  "performance": {
-    "lighthouse_score": 92,
-    "bundle_size_kb": 145,
-    "first_contentful_paint_ms": 1200
+  "tags": [
+    "medical-cannabis",
+    "modern",
+    "premium",
+    "accessible",
+    "light-theme"
+  ],
+  "features": [
+    "Sage-teal color palette",
+    "Plus Jakarta Sans + Archivo Narrow typography",
+    "Image showcase with overlay",
+    "Blog feed integration",
+    "Value propositions with icons",
+    "Medical-grade shadows",
+    "WCAG AA accessible"
+  ],
+  "previewUrl": "",
+  "thumbnailUrl": "",
+  "screenshots": [],
+  "demoUrl": null,
+  "price": 0,
+  "isPremium": false,
+  "isActive": true,
+  "sections": [
+    "HeroVideo",
+    "About",
+    "ValueProps",
+    "ImageShowcase",
+    "BlogFeed"
+  ],
+  "navigation": "NavFull",
+  "footer": "FooterFull",
+  "customization": {
+    "colors": {
+      "primary": "#1C4F4D",
+      "secondary": "#2C7D7A",
+      "accent": "#4DBFA1",
+      "text": "#2C2C2C",
+      "background": "#FFFFFF"
+    },
+    "fonts": {
+      "base": "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "heading": "'Archivo Narrow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
+      "decorative": "'Cinzel', Georgia, serif"
+    }
   },
   "accessibility": {
     "wcag_level": "AA",
-    "screen_reader_tested": true,
-    "keyboard_navigable": true,
-    "color_contrast_verified": true
-  },
-  "changelog": {
-    "2.0.0": "Complete design system overhaul with 30+ CSS variables, fixed all text visibility issues, enhanced accessibility",
-    "1.0.0": "Initial release with video hero, parallax scrolling, and basic customization"
+    "screen_reader_tested": true
   }
 }

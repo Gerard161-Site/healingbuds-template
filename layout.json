@@ -1,0 +1,52 @@
+{
+    "version": "1.0.0",
+    "navigation": "NavFull",
+    "sections": [
+        {
+            "type": "HeroVideo",
+            "id": "hero",
+            "config": {
+                "textAlign": "left"
+            }
+        },
+        {
+            "type": "About",
+            "id": "about",
+            "config": {
+                "heading": "Healing Buds: Advancing Global Cannabis Innovation",
+                "content": "Committed to excellence in every product we create and championing worldwide cannabis acceptance through quality and integrity."
+            }
+        },
+        {
+            "type": "ValueProps",
+            "id": "values",
+            "config": {
+                "heading": "Growing more than medicine"
+            }
+        },
+        {
+            "type": "ImageShowcase",
+            "id": "cultivation",
+            "config": {
+                "heading": "Production & Processing Excellence",
+                "content": "Our state-of-the-art facilities across South Africa and Portugal span more than 18,000 square metres dedicated to pharmaceutical-grade cannabis production, supporting our annual output of 60 tonnes. With access to diverse strains and genetics from our licensed partner network, we maintain rigorous oversight from seed selection through harvesting and processing.",
+                "ctaText": "Discover our production standards",
+                "ctaHref": "#",
+                "overlayStyle": "gradient-left"
+            }
+        },
+        {
+            "type": "BlogFeed",
+            "id": "news",
+            "config": {
+                "heading": "The Wire",
+                "subtitle": "Inside news & updates"
+            }
+        }
+    ],
+    "footer": "FooterFull",
+    "settings": {
+        "wrapperClass": "template-healingbuds",
+        "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Archivo+Narrow:wght@400;500;600;700&display=swap"
+    }
+}
