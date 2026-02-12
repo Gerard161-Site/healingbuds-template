@@ -6,7 +6,8 @@
             "type": "HeroVideo",
             "id": "hero",
             "config": {
-                "textAlign": "left"
+                "textAlign": "left",
+                "videoUrl": "assets/hero-video.mp4"
             }
         },
         {
