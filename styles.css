@@ -1,78 +1,250 @@
-/* Healing Buds Video Hero Template Styles */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Archivo+Narrow:wght@400;500;600;700&display=swap');
 
-.healing-buds-video-template {
-  --transition-speed: 300ms;
-  --animation-duration: 600ms;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== Healing Buds Template Styles ===== */
+/* Premium medical cannabis template — sage-teal palette */
+
+:root {
+  --tenant-color-primary: 178 48% 21%;
+  --tenant-color-secondary: 178 48% 33%;
+  --tenant-color-accent: 164 48% 53%;
+  --tenant-color-background: 0 0% 100%;
+  --tenant-color-surface: 164 20% 98%;
+  --tenant-color-text: 0 0% 17%;
+  --tenant-color-heading: 178 48% 21%;
+  --tenant-color-border: 164 20% 90%;
+  --tenant-font-base: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --tenant-font-heading: 'Archivo Narrow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* Smooth scroll behavior */
-html {
-  scroll-behavior: smooth;
+/* ===== Base Template Scoped Styles ===== */
+
+.template-healingbuds {
+  font-family: var(--tenant-font-base);
+  background-color: hsl(var(--tenant-color-background));
+  color: hsl(var(--tenant-color-text));
+  letter-spacing: -0.01em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Pharma font for hero titles */
-.font-pharma {
+.template-healingbuds h1,
+.template-healingbuds h2,
+.template-healingbuds h3,
+.template-healingbuds h4 {
+  font-family: var(--tenant-font-heading);
+  color: hsl(var(--tenant-color-heading));
+  font-weight: 600;
   letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
-/* Animations */
+.template-healingbuds p {
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+/* ===== Light Theme Overrides ===== */
+/* This is a light template (background: white) so components that
+   render white text need dark overlays for contrast. */
+
+/* Hero: dark overlay so white text is readable */
+.template-healingbuds section:first-of-type::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  background: linear-gradient(180deg,
+      hsl(var(--tenant-color-secondary) / 0.55) 0%,
+      hsl(var(--tenant-color-heading) / 0.7) 60%,
+      hsl(var(--tenant-color-heading) / 0.88) 100%);
+  pointer-events: none;
+}
+
+/* Footer: force dark background with white text */
+.template-healingbuds footer {
+  --tenant-color-surface: 176 39% 12%;
+  --tenant-color-background: 176 39% 12%;
+  --tenant-color-heading: 0 0% 100%;
+}
+
+.template-healingbuds footer a {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+
+.template-healingbuds footer a:hover {
+  color: white !important;
+}
+
+.template-healingbuds footer h4 {
+  color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.template-healingbuds footer span,
+.template-healingbuds footer p {
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+
+/* ===== Design System Tokens ===== */
+/* Brand-specific shadows, gradients, and transitions.
+   These can be referenced by CSS class names in section configs. */
+
+.template-healingbuds {
+  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.06);
+  --shadow-xl: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+  --shadow-2xl: 0 20px 40px -12px rgba(0, 0, 0, 0.12);
+  --shadow-card: 0 0 0 1px rgba(0, 0, 0, 0.03), 0 2px 4px rgba(0, 0, 0, 0.05), 0 12px 24px rgba(0, 0, 0, 0.05);
+  --shadow-elegant: 0 0 0 1px rgba(0, 0, 0, 0.02), 0 8px 24px -4px rgba(0, 0, 0, 0.08);
+
+  /* Smooth transitions */
+  --transition-base: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: all 0.35s cubic-bezier(0.34, 1.15, 0.64, 1);
+}
+
+/* ===== Utility Classes ===== */
+
+@layer utilities {
+  .template-healingbuds .hover-lift {
+    transition: all 0.2s ease-out;
+  }
+
+  .template-healingbuds .hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .template-healingbuds .card-linear {
+    background-color: hsl(var(--tenant-color-background));
+    border-radius: 0.75rem;
+    border: 1px solid hsl(var(--tenant-color-border) / 0.5);
+    transition: all 0.2s;
+  }
+
+  .template-healingbuds .card-linear:hover {
+    box-shadow: var(--shadow-card);
+    border-color: hsl(var(--tenant-color-border) / 0.7);
+    transform: translateY(-1px);
+  }
+
+  .template-healingbuds .btn-primary {
+    background-color: hsl(var(--tenant-color-primary));
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+
+  .template-healingbuds .btn-primary:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+
+  .template-healingbuds .btn-glass {
+    padding: 0.75rem 1.5rem;
+    border-radius: 1rem;
+    font-weight: 600;
+    transition: all 0.3s;
+    backdrop-filter: blur(24px);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+  }
+
+  .template-healingbuds .btn-glass:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .template-healingbuds .glow-accent {
+    box-shadow: 0 0 12px hsl(var(--tenant-color-accent) / 0.15);
+  }
+
+  .template-healingbuds .shadow-card {
+    box-shadow: var(--shadow-card);
+  }
+
+  .template-healingbuds .shadow-elegant {
+    box-shadow: var(--shadow-elegant);
+  }
+
+  .template-healingbuds .section-padding {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  .template-healingbuds .interactive-scale {
+    transition: transform 0.2s ease-out;
+  }
+
+  .template-healingbuds .interactive-scale:hover {
+    transform: scale(1.02);
+  }
+
+  .template-healingbuds .interactive-scale:active {
+    transform: scale(0.98);
+  }
+}
+
+/* ===== Animations ===== */
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
   }
+
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.1);
+  }
+
   50% {
-    opacity: 0.8;
+    box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.25), 0 2px 6px 0 rgba(0, 0, 0, 0.12);
   }
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp var(--animation-duration) ease-out forwards;
+.template-healingbuds .animate-pulse-glow {
+  animation: pulse-glow 4s ease-in-out infinite;
 }
 
-/* Video Hero Specific */
-.video-overlay {
-  background: linear-gradient(
-    to bottom right,
-    rgba(31, 42, 37, 0.6),
-    rgba(19, 48, 61, 0.55)
-  );
+/* ===== Responsive Spacing ===== */
+
+@media (min-width: 640px) {
+  .template-healingbuds .section-padding {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
 }
 
-/* Scroll Indicator */
-.scroll-indicator {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Hover Effects */
-.hover-lift {
-  transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-/* Responsive Typography */
-.responsive-heading {
-  font-size: clamp(2rem, 5vw, 4rem);
-}
-
-.responsive-subheading {
-  font-size: clamp(1.25rem, 3vw, 2rem);
-}
-
-.responsive-body {
-  font-size: clamp(1rem, 2vw, 1.125rem);
+@media (min-width: 768px) {
+  .template-healingbuds .section-padding {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
 }
