@@ -14,7 +14,8 @@
             "id": "about",
             "config": {
                 "heading": "Healing Buds: Advancing Global Cannabis Innovation",
-                "content": "Committed to excellence in every product we create and championing worldwide cannabis acceptance through quality and integrity."
+                "content": "Committed to excellence in every product we create and championing worldwide cannabis acceptance through quality and integrity.",
+                "imageUrl": "assets/greenhouse-exterior-hq.jpg"
             }
         },
         {
@@ -32,7 +33,8 @@
                 "content": "Our state-of-the-art facilities across South Africa and Portugal span more than 18,000 square metres dedicated to pharmaceutical-grade cannabis production, supporting our annual output of 60 tonnes. With access to diverse strains and genetics from our licensed partner network, we maintain rigorous oversight from seed selection through harvesting and processing.",
                 "ctaText": "Discover our production standards",
                 "ctaHref": "#",
-                "overlayStyle": "gradient-left"
+                "overlayStyle": "gradient-left",
+                "imageUrl": "assets/indoor-grow-hq.jpg"
             }
         },
         {

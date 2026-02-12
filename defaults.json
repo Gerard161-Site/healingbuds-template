@@ -2,7 +2,7 @@
   "template": "healingbuds",
   "slug": "healingbuds",
   "logoPath": null,
-  "heroImagePath": "hero-video-bg.jpg",
+  "heroImagePath": "assets/hero-video-bg.jpg",
   "heroVideoPath": null,
   "primaryColor": "178 48% 21%",
   "fontFamily": "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
