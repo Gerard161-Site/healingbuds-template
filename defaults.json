@@ -135,12 +135,16 @@
   "navigation": {
     "links": [
       {
+        "label": "Conditions",
+        "href": "/conditions"
+      },
+      {
         "label": "Products",
         "href": "/products"
       },
       {
-        "label": "Consultation",
-        "href": "/consultation"
+        "label": "The Wire",
+        "href": "/the-wire"
       },
       {
         "label": "About",
@@ -152,24 +156,50 @@
       }
     ],
     "cta": {
-      "label": "Book Consultation",
+      "label": "Check Eligibility",
       "href": "/consultation"
-    }
+    },
+    "cta2": {
+      "label": "Patient Login",
+      "href": "/login"
+    },
+    "showCart": true
   },
   "footer": {
-    "copyright": "© {year} {businessName}. All rights reserved.",
+    "tagline": "Pioneering tomorrow's medical cannabis solutions",
     "disclaimer": "Medical cannabis should only be used under the guidance of a qualified healthcare professional.",
     "sections": [
       {
-        "title": "Quick Links",
+        "title": "Company",
         "links": [
           {
-            "label": "Products",
+            "label": "About Us",
+            "href": "/about"
+          },
+          {
+            "label": "Our Products",
             "href": "/products"
           },
           {
-            "label": "How It Works",
-            "href": "/how-it-works"
+            "label": "The Wire",
+            "href": "/the-wire"
+          },
+          {
+            "label": "Contact",
+            "href": "/contact"
+          }
+        ]
+      },
+      {
+        "title": "Resources",
+        "links": [
+          {
+            "label": "Patient Access",
+            "href": "/consultation"
+          },
+          {
+            "label": "Conditions Treated",
+            "href": "/conditions"
           },
           {
             "label": "FAQ",

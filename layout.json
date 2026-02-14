@@ -1,6 +1,6 @@
 {
     "version": "1.0.0",
-    "navigation": "NavFull",
+    "navigation": "NavDark",
     "sections": [
         {
             "type": "HeroVideo",
@@ -48,7 +48,7 @@
             }
         }
     ],
-    "footer": "FooterFull",
+    "footer": "FooterBrand",
     "settings": {
         "wrapperClass": "template-healingbuds",
         "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Archivo+Narrow:wght@400;500;600;700&display=swap"
