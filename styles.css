@@ -49,20 +49,9 @@
 
 /* ===== Light Theme Overrides ===== */
 /* This is a light template (background: white) so components that
-   render white text need dark overlays for contrast. */
-
-/* Hero: dark overlay so white text is readable */
-.template-healingbuds section:first-of-type::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 5;
-  background: linear-gradient(180deg,
-      hsl(var(--tenant-color-secondary) / 0.55) 0%,
-      hsl(var(--tenant-color-heading) / 0.7) 60%,
-      hsl(var(--tenant-color-heading) / 0.88) 100%);
-  pointer-events: none;
-}
+   render white text need dark overlays for contrast.
+   NOTE: HeroVideo handles its own dark overlay internally —
+   no CSS ::after needed here. */
 
 /* Footer: force dark background with white text */
 .template-healingbuds footer {
