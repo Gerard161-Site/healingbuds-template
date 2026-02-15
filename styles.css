@@ -53,6 +53,22 @@
    NOTE: HeroVideo handles its own dark overlay internally —
    no CSS ::after needed here. */
 
+/* Dark-background sections: override heading + text colors for contrast */
+/* ValueProps (#values) uses the primary dark bg with white text */
+.template-healingbuds #values {
+  --tenant-color-surface: 178 48% 21%;
+  --tenant-color-background: 0 0% 100%;
+  --tenant-color-heading: 0 0% 100%;
+  --tenant-color-text: 0 0% 100%;
+  --tenant-color-border: 178 30% 30%;
+}
+
+/* ValueProps cards: keep dark heading on white card bg */
+.template-healingbuds #values .rounded-2xl {
+  --tenant-color-heading: 178 48% 21%;
+  --tenant-color-text: 0 0% 17%;
+}
+
 /* Footer: force dark background with white text */
 .template-healingbuds footer {
   --tenant-color-surface: 176 39% 12%;
