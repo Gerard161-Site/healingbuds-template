@@ -23,14 +23,6 @@
             }
         },
         {
-            "type": "ValueProps",
-            "id": "compliance",
-            "config": {
-                "heading": "Medical Standards & Compliance",
-                "subtitle": "We operate to the highest pharmaceutical standards."
-            }
-        },
-        {
             "type": "CTAWithImage",
             "id": "get-started",
             "config": {

@@ -57,25 +57,102 @@
 /* The 'Compliance' and 'Get Started' sections need dark text since they sit on light/muted backgrounds in the design */
 /* But 'HeroVideo' provides its own dark backdrop so we don't need to touch it */
 
+/* The 'How It Works' section needs to match the Lovable screenshot precisely */
+
 .template-healingbuds #how-it-works {
+  /* Using exact values from Lovable's index.css */
   --tenant-color-surface: 164 20% 98%;
-  --tenant-color-background: 164 20% 95%;
+  --tenant-color-background: 150 12% 97%;
+  /* Subtle sage-cream tint */
   --tenant-color-heading: 178 48% 21%;
-  --tenant-color-text: 0 0% 17%;
+  --tenant-color-text: 172 32% 20%;
+  padding-bottom: 2rem;
 }
 
-.template-healingbuds #compliance {
-  --tenant-color-surface: 164 20% 98%;
-  --tenant-color-background: 178 48% 21%;
-  --tenant-color-heading: 0 0% 100%;
-  --tenant-color-text: 0 0% 95%;
+/* 
+ * The React code used a 3-column grid for the first 3 items, 
+ * and a 2-column flex layout for the last two.
+ * Since BudStacks ValueProps auto-grids based on the number of items,
+ * sending 5 items will usually result in a 3-col grid, dropping the last 2 to a new row.
+ * We need to explicitly style the cards to look like the screenshot.
+ */
+.template-healingbuds #how-it-works .rounded-2xl {
+  background-color: hsl(155 10% 98%);
+  /* Card background */
+  border: 1px solid hsl(165 18% 86% / 0.5);
+  /* Border */
+  border-radius: 0.75rem;
+  /* rounded-xl */
+  padding: 1.5rem;
+  box-shadow: none;
+  /* No heavy shadow by default */
+  text-align: center;
+  /* Centering override just in case */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 }
 
-.template-healingbuds #compliance .rounded-2xl {
-  --tenant-color-heading: 0 0% 100%;
-  --tenant-color-text: 0 0% 95%;
-  background: hsl(178 48% 25%);
-  border-color: hsl(178 48% 30%);
+/* Icon container circle styling */
+.template-healingbuds #how-it-works .rounded-2xl .rounded-full {
+  background-color: hsl(178 48% 21% / 0.1);
+  /* Primary green at 10% opacity */
+  width: 3rem;
+  height: 3rem;
+  margin: 0 auto 1rem auto;
+}
+
+/* Icon color */
+.template-healingbuds #how-it-works .rounded-2xl svg {
+  color: hsl(178 48% 21%);
+  /* Primary green */
+}
+
+.template-healingbuds #how-it-works h3 {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+.template-healingbuds #how-it-works p {
+  font-size: 0.875rem;
+  color: hsl(165 12% 42%);
+  /* Muted foreground */
+}
+
+/* Center the second row of 2 items by targeting the grid */
+/* Budstacks ValueProps component uses `grid grid-cols-1 md:grid-cols-3` by default. */
+/* We can target the 4th and 5th items to adjust their grid placement or flex them. */
+.template-healingbuds #how-it-works .grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.template-healingbuds #how-it-works .grid>div {
+  flex: 1 1 calc(33.333% - 1rem);
+  min-width: 280px;
+  max-width: 380px;
+}
+
+/* Forcing specific items into specific layout could be tricky in pure CSS. 
+But we can override the width of the last two items to roughly center them if needed. */
+
+/* The user noted "yellow is missing". In the screenshot, the icons don't have yellow, 
+but perhaps they mean the icons themselves or a hover effect? 
+Looking closely at the screenshot, the "Get Started" and "Compliance" icons might have had a subtle yellow tint in the Lovable design... Wait, in the code:
+The "Compliance Banner" had `text-primary`. 
+Actually, the user said "yellow is missing also" - this might refer to the hovering CTA or a badge. 
+Ah, looking at `tailwind.config.ts`, there is `--highlight: 42 90% 55%;` which is yellow. 
+Let's add a subtle yellow accent to the cards on hover to match the Lovable theme's interactiveness. */
+
+.template-healingbuds #how-it-works .rounded-2xl:hover {
+  border-color: hsl(42 90% 55% / 0.5);
+  /* Yellow border on hover */
+  transform: translateY(-2px);
+  transition: all 0.2s ease-out;
+  box-shadow: 0 10px 25px -5px hsla(165, 28%, 28%, 0.10);
 }
 
 .template-healingbuds #get-started {
