@@ -111,25 +111,35 @@
   },
   "valueProps": [
     {
-      "title": "Superior Quality",
-      "description": "Every stage from cultivation through extraction to final production is meticulously managed with unwavering attention to detail. Our EU GMP-certified products meet the highest international standards.",
-      "icon": "Sprout"
+      "title": "Complete Assessment",
+      "description": "Fill out our secure medical questionnaire",
+      "icon": "Stethoscope"
     },
     {
-      "title": "Expanding Access",
-      "description": "Our mission is to ensure medical cannabis reaches those who need it most. Through evidence-based advocacy and education, we are reducing barriers and creating pathways to safe, legal access.",
-      "icon": "Users"
+      "title": "Verify Identity",
+      "description": "Quick KYC verification process",
+      "icon": "Shield"
     },
     {
-      "title": "Research-Driven Innovation",
-      "description": "Collaborating with world-class research institutions including Imperial College London and University of Pennsylvania, we advance scientific knowledge of cannabis therapeutics.",
-      "icon": "FlaskConical"
+      "title": "Get Approved",
+      "description": "Medical team reviews your application",
+      "icon": "CheckCircle"
+    },
+    {
+      "title": "EU GMP Certified Production",
+      "description": "All products are manufactured in state-of-the-art pharmaceutical facilities under strict EU Good Manufacturing Practice standards with rigorous third-party lab testing.",
+      "icon": "Shield"
+    },
+    {
+      "title": "Complete Seed-to-Sale Traceability",
+      "description": "Every product features QR code verification for blockchain-backed traceability. Child-resistant, UV-protected, tamper-evident packaging meets pharmaceutical standards.",
+      "icon": "Stethoscope"
     }
   ],
   "pageContent": {
-    "homeHeroTitle": "Welcome to Healing Buds",
-    "homeHeroSubtitle": "Pioneering tomorrow's medical cannabis solutions",
-    "homeHeroDescription": "Experience the highest quality medical-grade cannabis products, backed by science and delivered with care.",
+    "homeHeroTitle": "Pharmaceutical-Grade",
+    "homeHeroSubtitle": "Medical Cannabis",
+    "homeHeroDescription": "From cultivation to delivery, every product is tracked and verified. Access quality-controlled, lab-tested medical cannabis with complete transparency.",
     "aboutMission": "Committed to excellence in every product we create and championing worldwide cannabis acceptance through quality and integrity."
   },
   "navigation": {

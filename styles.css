@@ -54,19 +54,55 @@
    no CSS ::after needed here. */
 
 /* Dark-background sections: override heading + text colors for contrast */
-/* ValueProps (#values) uses the primary dark bg with white text */
-.template-healingbuds #values {
-  --tenant-color-surface: 178 48% 21%;
-  --tenant-color-background: 0 0% 100%;
-  --tenant-color-heading: 0 0% 100%;
-  --tenant-color-text: 0 0% 100%;
-  --tenant-color-border: 178 30% 30%;
-}
+/* The 'Compliance' and 'Get Started' sections need dark text since they sit on light/muted backgrounds in the design */
+/* But 'HeroVideo' provides its own dark backdrop so we don't need to touch it */
 
-/* ValueProps cards: keep dark heading on white card bg */
-.template-healingbuds #values .rounded-2xl {
+.template-healingbuds #how-it-works {
+  --tenant-color-surface: 164 20% 98%;
+  --tenant-color-background: 164 20% 95%;
   --tenant-color-heading: 178 48% 21%;
   --tenant-color-text: 0 0% 17%;
+}
+
+.template-healingbuds #compliance {
+  --tenant-color-surface: 164 20% 98%;
+  --tenant-color-background: 178 48% 21%;
+  --tenant-color-heading: 0 0% 100%;
+  --tenant-color-text: 0 0% 95%;
+}
+
+.template-healingbuds #compliance .rounded-2xl {
+  --tenant-color-heading: 0 0% 100%;
+  --tenant-color-text: 0 0% 95%;
+  background: hsl(178 48% 25%);
+  border-color: hsl(178 48% 30%);
+}
+
+.template-healingbuds #get-started {
+  --tenant-color-surface: 164 20% 98%;
+  --tenant-color-background: 0 0% 100%;
+  --tenant-color-heading: 178 48% 21%;
+  --tenant-color-text: 0 0% 17%;
+}
+
+/* Add specialized animation for the CTA icon float */
+@keyframes float-cta {
+
+  0%,
+  100% {
+    transform: translateY(0);
+    filter: drop-shadow(0 10px 15px rgba(28, 79, 77, 0.1));
+  }
+
+  50% {
+    transform: translateY(-10px);
+    filter: drop-shadow(0 20px 20px rgba(28, 79, 77, 0.15));
+  }
+}
+
+.template-healingbuds #get-started img {
+  animation: float-cta 6s ease-in-out infinite;
+  border-radius: 100%;
 }
 
 /* Footer: force dark background with white text */
