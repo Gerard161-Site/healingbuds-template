@@ -59,20 +59,32 @@
 
 /* ===== Primary CTA Overrides (Yellow) ===== */
 /* The Lovable design uses a bright yellow 'highlight' color for the main CTAs */
-.template-healingbuds #hero .btn-primary,
-.template-healingbuds #get-started .btn-primary {
+.template-healingbuds #hero a[href*="consultation"],
+.template-healingbuds #get-started a[href*="consultation"] {
   background-color: hsl(42 90% 55%) !important;
-  border-color: hsl(42 90% 55%) !important;
   color: hsl(178 48% 21%) !important;
   /* Dark teal text for contrast */
-  font-weight: 600;
+  font-weight: 600 !important;
+  border: none !important;
 }
 
-.template-healingbuds #hero .btn-primary:hover,
-.template-healingbuds #get-started .btn-primary:hover {
+.template-healingbuds #hero a[href*="consultation"]:hover,
+.template-healingbuds #get-started a[href*="consultation"]:hover {
   background-color: hsl(42 90% 50%) !important;
-  border-color: hsl(42 90% 50%) !important;
-  box-shadow: 0 10px 25px -5px hsla(42, 90%, 55%, 0.3);
+  box-shadow: 0 10px 25px -5px hsla(42, 90%, 55%, 0.3) !important;
+  transform: scale(1.05);
+  /* Match framer-motion hover */
+}
+
+/* Hide the automatic tenant logo circle in the Hero to match the Lovable layout */
+/* The Lovable design only featured text and the traceabilty watermark pill, no central logo */
+.template-healingbuds #hero .rounded-full.overflow-hidden.border-white\/40 {
+  display: none !important;
+}
+
+/* Adjust the watermark pill positioning slightly to perfectly match the original */
+.template-healingbuds #hero .absolute.inset-0.z-\[2\] .relative {
+  transform: translateX(18%) scale(1.1) !important;
 }
 
 /* The 'How It Works' section needs to match the Lovable screenshot precisely */
