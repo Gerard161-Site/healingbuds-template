@@ -1,7 +1,7 @@
 {
   "template": "healingbuds",
   "slug": "healingbuds",
-  "logoPath": null,
+  "logoPath": "assets/hb-logo-white.png",
   "heroImagePath": "assets/hero-video-bg.jpg",
   "heroVideoPath": null,
   "primaryColor": "178 48% 21%",

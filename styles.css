@@ -57,6 +57,24 @@
 /* The 'Compliance' and 'Get Started' sections need dark text since they sit on light/muted backgrounds in the design */
 /* But 'HeroVideo' provides its own dark backdrop so we don't need to touch it */
 
+/* ===== Primary CTA Overrides (Yellow) ===== */
+/* The Lovable design uses a bright yellow 'highlight' color for the main CTAs */
+.template-healingbuds #hero .btn-primary,
+.template-healingbuds #get-started .btn-primary {
+  background-color: hsl(42 90% 55%) !important;
+  border-color: hsl(42 90% 55%) !important;
+  color: hsl(178 48% 21%) !important;
+  /* Dark teal text for contrast */
+  font-weight: 600;
+}
+
+.template-healingbuds #hero .btn-primary:hover,
+.template-healingbuds #get-started .btn-primary:hover {
+  background-color: hsl(42 90% 50%) !important;
+  border-color: hsl(42 90% 50%) !important;
+  box-shadow: 0 10px 25px -5px hsla(42, 90%, 55%, 0.3);
+}
+
 /* The 'How It Works' section needs to match the Lovable screenshot precisely */
 
 .template-healingbuds #how-it-works {
