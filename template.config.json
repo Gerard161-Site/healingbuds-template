@@ -1,60 +1,20 @@
 {
-  "id": "healingbuds",
-  "slug": "healingbuds",
-  "name": "Healing Buds",
-  "description": "Premium medical cannabis template with sage-teal color palette, rich design system, and pharmaceutical-grade aesthetic. Features Plus Jakarta Sans typography, smooth animations, and WCAG AA accessibility.",
-  "version": "2.0.0",
-  "type": "data-only",
-  "author": "BudStack Platform",
-  "category": "medical",
-  "tags": [
-    "medical-cannabis",
-    "modern",
-    "premium",
-    "accessible",
-    "light-theme"
-  ],
-  "features": [
-    "Sage-teal color palette",
-    "Plus Jakarta Sans + Archivo Narrow typography",
-    "Image showcase with overlay",
-    "Blog feed integration",
-    "Value propositions with icons",
-    "Medical-grade shadows",
-    "WCAG AA accessible"
-  ],
-  "previewUrl": "",
-  "thumbnailUrl": "",
-  "screenshots": [],
-  "demoUrl": null,
-  "price": 0,
-  "isPremium": false,
-  "isActive": true,
-  "sections": [
-    "HeroVideo",
-    "About",
-    "ValueProps",
-    "ImageShowcase",
-    "BlogFeed"
-  ],
-  "navigation": "NavFull",
-  "footer": "FooterFull",
-  "customization": {
-    "colors": {
-      "primary": "#1C4F4D",
-      "secondary": "#2C7D7A",
-      "accent": "#4DBFA1",
-      "text": "#2C2C2C",
-      "background": "#FFFFFF"
-    },
-    "fonts": {
-      "base": "'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-      "heading": "'Archivo Narrow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-      "decorative": "'Cinzel', Georgia, serif"
-    }
-  },
-  "accessibility": {
-    "wcag_level": "AA",
-    "screen_reader_tested": true
-  }
+    "id": "southhealing",
+    "slug": "southhealing",
+    "name": "South Healing",
+    "description": "Pharmaceutical-grade medical cannabis template with a clean, sage/teal aesthetic and video hero.",
+    "category": "medical",
+    "tags": [
+        "medical",
+        "clean",
+        "trust",
+        "video"
+    ],
+    "features": [
+        "Video Hero",
+        "Compliance Blocks",
+        "Eligibility Steps"
+    ],
+    "author": "BudStacks Platform",
+    "version": "1.0.0"
 }

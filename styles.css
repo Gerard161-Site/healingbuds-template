@@ -1,398 +1,166 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Archivo+Narrow:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ===== Healing Buds Template Styles ===== */
-/* Premium medical cannabis template — sage-teal palette */
-
 :root {
-  --tenant-color-primary: 178 48% 21%;
-  --tenant-color-secondary: 178 48% 33%;
-  --tenant-color-accent: 164 48% 53%;
-  --tenant-color-background: 0 0% 100%;
-  --tenant-color-surface: 164 20% 98%;
-  --tenant-color-text: 0 0% 17%;
-  --tenant-color-heading: 178 48% 21%;
-  --tenant-color-border: 164 20% 90%;
-  --tenant-font-base: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  --tenant-font-heading: 'Archivo Narrow', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --tenant-color-primary: 165 42% 23%;
+    --tenant-color-secondary: 165 42% 33%;
+    --tenant-color-accent: 42 96% 56%;
+    --tenant-color-background: 0 0% 98%;
+    --tenant-color-surface: 0 0% 100%;
+    --tenant-color-text: 165 42% 15%;
+    --tenant-color-heading: 165 42% 23%;
+    --tenant-color-border: 165 15% 90%;
+    --tenant-color-highlight: 42 96% 56%;
+    /* Yellow highlight */
+
+    --tenant-font-base: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    --tenant-font-heading: 'Plus Jakarta Sans', 'Inter', sans-serif;
 }
 
-/* ===== Base Template Scoped Styles ===== */
-
 .template-healingbuds {
-  font-family: var(--tenant-font-base);
-  background-color: hsl(var(--tenant-color-background));
-  color: hsl(var(--tenant-color-text));
-  letter-spacing: -0.01em;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family: var(--tenant-font-base);
+    background-color: hsl(var(--tenant-color-background));
+    color: hsl(var(--tenant-color-text));
+    letter-spacing: -0.01em;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .template-healingbuds h1,
 .template-healingbuds h2,
 .template-healingbuds h3,
 .template-healingbuds h4 {
-  font-family: var(--tenant-font-heading);
-  color: hsl(var(--tenant-color-heading));
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.2;
+    font-family: var(--tenant-font-heading);
+    color: hsl(var(--tenant-color-heading));
+    font-weight: 600;
+    letter-spacing: -0.02em;
+}
+
+.template-healingbuds h1 {
+    line-height: 1.1;
 }
 
 .template-healingbuds p {
-  line-height: 1.7;
-  letter-spacing: 0.01em;
+    line-height: 1.7;
 }
 
-/* ===== Light Theme Overrides ===== */
-/* This is a light template (background: white) so components that
-   render white text need dark overlays for contrast.
-   NOTE: HeroVideo handles its own dark overlay internally —
-   no CSS ::after needed here. */
-
-/* Dark-background sections: override heading + text colors for contrast */
-/* The 'Compliance' and 'Get Started' sections need dark text since they sit on light/muted backgrounds in the design */
-/* But 'HeroVideo' provides its own dark backdrop so we don't need to touch it */
-
-/* ===== Primary CTA Overrides (Yellow) ===== */
-/* The Lovable design uses a bright yellow 'highlight' color for the main CTAs */
-.template-healingbuds #hero a[href*="consultation"],
-.template-healingbuds #get-started a[href*="consultation"] {
-  background-color: hsl(42 90% 55%) !important;
-  color: hsl(178 48% 21%) !important;
-  /* Dark teal text for contrast */
-  font-weight: 600 !important;
-  border: none !important;
+/* NavTransparent / Dark Hero overwrites */
+.template-healingbuds #hero {
+    --tenant-color-heading: 0 0% 100%;
+    --tenant-color-text: 0 0% 90%;
 }
 
-.template-healingbuds #hero a[href*="consultation"]:hover,
-.template-healingbuds #get-started a[href*="consultation"]:hover {
-  background-color: hsl(42 90% 50%) !important;
-  box-shadow: 0 10px 25px -5px hsla(42, 90%, 55%, 0.3) !important;
-  transform: scale(1.05);
-  /* Match framer-motion hover */
+.template-healingbuds #hero h1 span.block {
+    color: hsl(var(--tenant-color-highlight));
 }
 
-/* Hide the automatic tenant logo circle in the Hero to match the Lovable layout */
-/* The Lovable design only featured text and the traceabilty watermark pill, no central logo */
-.template-healingbuds #hero .rounded-full.overflow-hidden.border-white\/40 {
-  display: none !important;
+.template-healingbuds .btn-primary {
+    background-color: hsl(var(--tenant-color-primary));
+    color: white;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 9999px;
 }
 
-/* Adjust the watermark pill positioning slightly to perfectly match the original */
-.template-healingbuds #hero .absolute.inset-0.z-\[2\] .relative {
-  transform: translateX(18%) scale(1.1) !important;
+.template-healingbuds .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px hsla(165, 42%, 23%, 0.2);
 }
 
-/* The 'How It Works' section needs to match the Lovable screenshot precisely */
-
+/* Specific styling for the 'How it works' section backgrounnd */
 .template-healingbuds #how-it-works {
-  /* Using exact values from Lovable's index.css */
-  --tenant-color-surface: 164 20% 98%;
-  --tenant-color-background: 150 12% 97%;
-  /* Subtle sage-cream tint */
-  --tenant-color-heading: 178 48% 21%;
-  --tenant-color-text: 172 32% 20%;
-  padding-bottom: 2rem;
+    background-color: hsl(var(--tenant-color-surface));
 }
 
-/* 
- * The React code used a 3-column grid for the first 3 items, 
- * and a 2-column flex layout for the last two.
- * Since BudStacks ValueProps auto-grids based on the number of items,
- * sending 5 items will usually result in a 3-col grid, dropping the last 2 to a new row.
- * We need to explicitly style the cards to look like the screenshot.
- */
-.template-healingbuds #how-it-works .rounded-2xl {
-  background-color: hsl(155 10% 98%);
-  /* Card background */
-  border: 1px solid hsl(165 18% 86% / 0.5);
-  /* Border */
-  border-radius: 0.75rem;
-  /* rounded-xl */
-  padding: 1.5rem;
-  box-shadow: none;
-  /* No heavy shadow by default */
-  text-align: center;
-  /* Centering override just in case */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+.template-healingbuds #compliance {
+    background-color: hsl(var(--tenant-color-background));
 }
 
-/* Icon container circle styling */
-.template-healingbuds #how-it-works .rounded-2xl .rounded-full {
-  background-color: hsl(178 48% 21% / 0.1);
-  /* Primary green at 10% opacity */
-  width: 3rem;
-  height: 3rem;
-  margin: 0 auto 1rem auto;
+.template-healingbuds #compliance .grid>div {
+    background-color: hsla(165, 42%, 23%, 0.05);
+    /* very light sage for cards */
 }
 
-/* Icon color */
-.template-healingbuds #how-it-works .rounded-2xl svg {
-  color: hsl(178 48% 21%);
-  /* Primary green */
-}
-
-.template-healingbuds #how-it-works h3 {
-  font-size: 1.125rem;
-  margin-bottom: 0.5rem;
-}
-
-.template-healingbuds #how-it-works p {
-  font-size: 0.875rem;
-  color: hsl(165 12% 42%);
-  /* Muted foreground */
-}
-
-/* Center the second row of 2 items by targeting the grid */
-/* Budstacks ValueProps component uses `grid grid-cols-1 md:grid-cols-3` by default. */
-/* We can target the 4th and 5th items to adjust their grid placement or flex them. */
-.template-healingbuds #how-it-works .grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-.template-healingbuds #how-it-works .grid>div {
-  flex: 1 1 calc(33.333% - 1rem);
-  min-width: 280px;
-  max-width: 380px;
-}
-
-/* Forcing specific items into specific layout could be tricky in pure CSS. 
-But we can override the width of the last two items to roughly center them if needed. */
-
-/* The user noted "yellow is missing". In the screenshot, the icons don't have yellow, 
-but perhaps they mean the icons themselves or a hover effect? 
-Looking closely at the screenshot, the "Get Started" and "Compliance" icons might have had a subtle yellow tint in the Lovable design... Wait, in the code:
-The "Compliance Banner" had `text-primary`. 
-Actually, the user said "yellow is missing also" - this might refer to the hovering CTA or a badge. 
-Ah, looking at `tailwind.config.ts`, there is `--highlight: 42 90% 55%;` which is yellow. 
-Let's add a subtle yellow accent to the cards on hover to match the Lovable theme's interactiveness. */
-
-.template-healingbuds #how-it-works .rounded-2xl:hover {
-  border-color: hsl(42 90% 55% / 0.5);
-  /* Yellow border on hover */
-  transform: translateY(-2px);
-  transition: all 0.2s ease-out;
-  box-shadow: 0 10px 25px -5px hsla(165, 28%, 28%, 0.10);
-}
-
-.template-healingbuds #get-started {
-  --tenant-color-surface: 164 20% 98%;
-  --tenant-color-background: 0 0% 100%;
-  --tenant-color-heading: 178 48% 21%;
-  --tenant-color-text: 0 0% 17%;
-}
-
-/* Add specialized animation for the CTA icon float */
-@keyframes float-cta {
-
-  0%,
-  100% {
-    transform: translateY(0);
-    filter: drop-shadow(0 10px 15px rgba(28, 79, 77, 0.1));
-  }
-
-  50% {
-    transform: translateY(-10px);
-    filter: drop-shadow(0 20px 20px rgba(28, 79, 77, 0.15));
-  }
-}
-
-.template-healingbuds #get-started img {
-  animation: float-cta 6s ease-in-out infinite;
-  border-radius: 100%;
-}
-
-/* Footer: force dark background with white text */
 .template-healingbuds footer {
-  --tenant-color-surface: 176 39% 12%;
-  --tenant-color-background: 176 39% 12%;
-  --tenant-color-heading: 0 0% 100%;
+    background-color: hsla(165, 42%, 23%, 1) !important;
+    color: white !important;
 }
 
+.template-healingbuds footer h1,
+.template-healingbuds footer h2,
+.template-healingbuds footer h3,
+.template-healingbuds footer h4,
 .template-healingbuds footer a {
-  color: rgba(255, 255, 255, 0.6) !important;
+    color: white !important;
 }
 
 .template-healingbuds footer a:hover {
-  color: white !important;
+    color: hsla(42, 96%, 56%, 1) !important;
 }
 
-.template-healingbuds footer h4 {
-  color: rgba(255, 255, 255, 0.9) !important;
+/* ========================================= */
+/* Structural Layout Overrides */
+/* ========================================= */
+
+/* 1. ValueProps: Convert svgs into numbers! */
+.template-southhealing #how-it-works .grid>div svg {
+    display: none;
 }
 
-.template-healingbuds footer span,
-.template-healingbuds footer p {
-  color: rgba(255, 255, 255, 0.7) !important;
+.template-southhealing #how-it-works .grid>div:nth-child(1) .w-16::before {
+    content: '1';
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: hsl(var(--tenant-color-highlight));
 }
 
-/* ===== Design System Tokens ===== */
-/* Brand-specific shadows, gradients, and transitions.
-   These can be referenced by CSS class names in section configs. */
-
-.template-healingbuds {
-  --shadow-xs: 0 1px 2px 0 rgba(0, 0, 0, 0.02);
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.02);
-  --shadow-md: 0 2px 4px -1px rgba(0, 0, 0, 0.06), 0 4px 6px -1px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 4px 6px -2px rgba(0, 0, 0, 0.05), 0 10px 15px -3px rgba(0, 0, 0, 0.06);
-  --shadow-xl: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
-  --shadow-2xl: 0 20px 40px -12px rgba(0, 0, 0, 0.12);
-  --shadow-card: 0 0 0 1px rgba(0, 0, 0, 0.03), 0 2px 4px rgba(0, 0, 0, 0.05), 0 12px 24px rgba(0, 0, 0, 0.05);
-  --shadow-elegant: 0 0 0 1px rgba(0, 0, 0, 0.02), 0 8px 24px -4px rgba(0, 0, 0, 0.08);
-
-  /* Smooth transitions */
-  --transition-base: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-spring: all 0.35s cubic-bezier(0.34, 1.15, 0.64, 1);
+.template-southhealing #how-it-works .grid>div:nth-child(2) .w-16::before {
+    content: '2';
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: hsl(var(--tenant-color-highlight));
 }
 
-/* ===== Utility Classes ===== */
-
-@layer utilities {
-  .template-healingbuds .hover-lift {
-    transition: all 0.2s ease-out;
-  }
-
-  .template-healingbuds .hover-lift:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg);
-  }
-
-  .template-healingbuds .card-linear {
-    background-color: hsl(var(--tenant-color-background));
-    border-radius: 0.75rem;
-    border: 1px solid hsl(var(--tenant-color-border) / 0.5);
-    transition: all 0.2s;
-  }
-
-  .template-healingbuds .card-linear:hover {
-    box-shadow: var(--shadow-card);
-    border-color: hsl(var(--tenant-color-border) / 0.7);
-    transform: translateY(-1px);
-  }
-
-  .template-healingbuds .btn-primary {
-    background-color: hsl(var(--tenant-color-primary));
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 9999px;
-    font-weight: 600;
-    transition: all 0.2s;
-  }
-
-  .template-healingbuds .btn-primary:hover {
-    opacity: 0.9;
-    transform: scale(1.02);
-  }
-
-  .template-healingbuds .btn-glass {
-    padding: 0.75rem 1.5rem;
-    border-radius: 1rem;
-    font-weight: 600;
-    transition: all 0.3s;
-    backdrop-filter: blur(24px);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    color: white;
-  }
-
-  .template-healingbuds .btn-glass:hover {
-    border-color: rgba(255, 255, 255, 0.6);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  }
-
-  .template-healingbuds .glow-accent {
-    box-shadow: 0 0 12px hsl(var(--tenant-color-accent) / 0.15);
-  }
-
-  .template-healingbuds .shadow-card {
-    box-shadow: var(--shadow-card);
-  }
-
-  .template-healingbuds .shadow-elegant {
-    box-shadow: var(--shadow-elegant);
-  }
-
-  .template-healingbuds .section-padding {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
-  }
-
-  .template-healingbuds .interactive-scale {
-    transition: transform 0.2s ease-out;
-  }
-
-  .template-healingbuds .interactive-scale:hover {
-    transform: scale(1.02);
-  }
-
-  .template-healingbuds .interactive-scale:active {
-    transform: scale(0.98);
-  }
+.template-southhealing #how-it-works .grid>div:nth-child(3) .w-16::before {
+    content: '3';
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: hsl(var(--tenant-color-highlight));
 }
 
-/* ===== Animations ===== */
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-@keyframes pulse-glow {
-
-  0%,
-  100% {
-    box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.2), 0 1px 4px 0 rgba(0, 0, 0, 0.1);
-  }
-
-  50% {
-    box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.25), 0 2px 6px 0 rgba(0, 0, 0, 0.12);
-  }
-}
-
-.template-healingbuds .animate-pulse-glow {
-  animation: pulse-glow 4s ease-in-out infinite;
-}
-
-/* ===== Responsive Spacing ===== */
-
-@media (min-width: 640px) {
-  .template-healingbuds .section-padding {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-  }
-}
-
-@media (min-width: 768px) {
-  .template-healingbuds .section-padding {
-    padding-top: 6rem;
+/* 2. Seamless CTABanners for inline buttons */
+.template-southhealing #how-it-works-cta,
+.template-southhealing #compliance-cta {
+    padding-top: 0 !important;
     padding-bottom: 6rem;
-  }
+}
+
+.template-southhealing #how-it-works-cta {
+    background-color: hsl(var(--tenant-color-surface));
+}
+
+.template-southhealing #compliance-cta {
+    background-color: hsl(var(--tenant-color-background));
+}
+
+.template-southhealing #how-it-works-cta h2,
+.template-southhealing #how-it-works-cta p,
+.template-southhealing #compliance-cta h2,
+.template-southhealing #compliance-cta p {
+    display: none;
+}
+
+/* 3. Style the secondary "Learn More" button as an outline */
+.template-southhealing #compliance-cta .btn-primary {
+    background-color: transparent;
+    color: hsl(var(--tenant-color-text));
+    border: 1px solid hsl(var(--tenant-color-border));
+}
+
+.template-southhealing #compliance-cta .btn-primary:hover {
+    background-color: hsl(var(--tenant-color-primary) / 0.05);
+    box-shadow: none;
+    transform: none;
 }

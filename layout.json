@@ -8,10 +8,11 @@
             "config": {
                 "textAlign": "center",
                 "videoUrl": "assets/hero-video.mp4",
-                "watermarkUrl": "assets/hb-icon-white-traceability.png",
+                "title": "Pharmaceutical-Grade",
+                "subtitle": "Medical Cannabis",
                 "ctaText": "Check Eligibility",
                 "secondaryCtaText": "Sign In",
-                "secondaryCtaHref": "/auth"
+                "pillText": "Seed to Sale Traceability"
             }
         },
         {
@@ -19,53 +20,71 @@
             "id": "how-it-works",
             "config": {
                 "heading": "Get Started in 3 Simple Steps",
-                "subtitle": "Our streamlined verification process ensures safe and legal access to medical cannabis."
+                "subtitle": "Our streamlined verification process ensures safe and legal access to medical cannabis.",
+                "items": [
+                    {
+                        "title": "Complete Assessment",
+                        "description": "Fill out our secure medical questionnaire",
+                        "icon": "1"
+                    },
+                    {
+                        "title": "Verify Identity",
+                        "description": "Quick KYC verification process",
+                        "icon": "2"
+                    },
+                    {
+                        "title": "Get Approved",
+                        "description": "Medical team reviews your application",
+                        "icon": "3"
+                    }
+                ]
             }
         },
         {
-            "type": "CTAWithImage",
-            "id": "get-started",
+            "type": "CTABanner",
+            "id": "how-it-works-cta",
             "config": {
-                "heading": "Ready to Get Started?",
-                "subtitle": "Check your eligibility for medical cannabis treatment today.",
-                "ctaText": "Start Medical Assessment",
-                "imageUrl": "assets/hb-icon-cta.webp"
+                "heading": " ",
+                "content": " ",
+                "ctaText": "Start Your Assessment →",
+                "ctaHref": "/eligibility"
             }
         },
         {
-            "type": "About",
-            "id": "about",
+            "type": "Features",
+            "id": "compliance",
             "config": {
-                "heading": "Healing Buds: Advancing Global Cannabis Innovation",
-                "content": "Committed to excellence in every product we create and championing worldwide cannabis acceptance through quality and integrity.",
-                "imageUrl": "assets/greenhouse-exterior-hq.jpg"
+                "heading": " ",
+                "subtitle": " ",
+                "items": [
+                    {
+                        "title": "EU GMP Certified Production",
+                        "description": "All products are manufactured in state-of-the-art pharmaceutical facilities under strict EU Good Manufacturing Practice standards with rigorous third-party lab testing.",
+                        "icon": "Shield"
+                    },
+                    {
+                        "title": "Complete Seed-to-Sale Traceability",
+                        "description": "Every product features QR code verification for blockchain-backed traceability. Child-resistant, UV-protected, tamper-evident packaging meets pharmaceutical standards.",
+                        "icon": "HeartPulse"
+                    }
+                ]
             }
         },
         {
-            "type": "ImageShowcase",
-            "id": "cultivation",
+            "type": "CTABanner",
+            "id": "compliance-cta",
             "config": {
-                "heading": "Production & Processing Excellence",
-                "content": "Our state-of-the-art facilities across South Africa and Portugal span more than 18,000 square metres dedicated to pharmaceutical-grade cannabis production, supporting our annual output of 60 tonnes. With access to diverse strains and genetics from our licensed partner network, we maintain rigorous oversight from seed selection through harvesting and processing.",
-                "ctaText": "Discover our production standards",
-                "ctaHref": "#",
-                "overlayStyle": "gradient-left",
-                "imageUrl": "assets/indoor-grow-hq.jpg"
-            }
-        },
-        {
-            "type": "BlogFeed",
-            "id": "news",
-            "config": {
-                "heading": "The Wire",
-                "subtitle": "Inside news & updates"
+                "heading": " ",
+                "content": " ",
+                "ctaText": "Learn More About Our Standards",
+                "ctaHref": "/support"
             }
         }
     ],
-    "footer": "FooterBrand",
+    "footer": "FooterFull",
     "settings": {
         "wrapperClass": "template-healingbuds",
-        "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Archivo+Narrow:wght@400;500;600;700&display=swap",
-        "sectionPadding": "4rem/5rem/6rem"
+        "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600;700&display=swap",
+        "sectionPadding": "4rem/6rem"
     }
 }
