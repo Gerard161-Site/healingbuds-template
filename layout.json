@@ -16,6 +16,36 @@
             }
         },
         {
+            "type": "Features",
+            "id": "hero-features",
+            "config": {
+                "heading": " ",
+                "subtitle": " ",
+                "items": [
+                    {
+                        "title": "EU GMP Certified",
+                        "description": "",
+                        "icon": "Award"
+                    },
+                    {
+                        "title": "Lab Tested",
+                        "description": "",
+                        "icon": "Shield"
+                    },
+                    {
+                        "title": "Secure & Compliant",
+                        "description": "",
+                        "icon": "Check"
+                    },
+                    {
+                        "title": "Discreet Delivery",
+                        "description": "",
+                        "icon": "Truck"
+                    }
+                ]
+            }
+        },
+        {
             "type": "ValueProps",
             "id": "how-it-works",
             "config": {

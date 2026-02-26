@@ -105,25 +105,25 @@
 /* ========================================= */
 
 /* 1. ValueProps: Convert svgs into numbers! */
-.template-southhealing #how-it-works .grid>div svg {
+.template-healingbuds #how-it-works .grid>div svg {
     display: none;
 }
 
-.template-southhealing #how-it-works .grid>div:nth-child(1) .w-16::before {
+.template-healingbuds #how-it-works .grid>div:nth-child(1) .w-16::before {
     content: '1';
     font-size: 1.5rem;
     font-weight: 700;
     color: hsl(var(--tenant-color-highlight));
 }
 
-.template-southhealing #how-it-works .grid>div:nth-child(2) .w-16::before {
+.template-healingbuds #how-it-works .grid>div:nth-child(2) .w-16::before {
     content: '2';
     font-size: 1.5rem;
     font-weight: 700;
     color: hsl(var(--tenant-color-highlight));
 }
 
-.template-southhealing #how-it-works .grid>div:nth-child(3) .w-16::before {
+.template-healingbuds #how-it-works .grid>div:nth-child(3) .w-16::before {
     content: '3';
     font-size: 1.5rem;
     font-weight: 700;
@@ -131,35 +131,35 @@
 }
 
 /* 2. Seamless CTABanners for inline buttons */
-.template-southhealing #how-it-works-cta,
-.template-southhealing #compliance-cta {
+.template-healingbuds #how-it-works-cta,
+.template-healingbuds #compliance-cta {
     padding-top: 0 !important;
     padding-bottom: 6rem;
 }
 
-.template-southhealing #how-it-works-cta {
+.template-healingbuds #how-it-works-cta {
     background-color: hsl(var(--tenant-color-surface));
 }
 
-.template-southhealing #compliance-cta {
+.template-healingbuds #compliance-cta {
     background-color: hsl(var(--tenant-color-background));
 }
 
-.template-southhealing #how-it-works-cta h2,
-.template-southhealing #how-it-works-cta p,
-.template-southhealing #compliance-cta h2,
-.template-southhealing #compliance-cta p {
+.template-healingbuds #how-it-works-cta h2,
+.template-healingbuds #how-it-works-cta p,
+.template-healingbuds #compliance-cta h2,
+.template-healingbuds #compliance-cta p {
     display: none;
 }
 
 /* 3. Style the secondary "Learn More" button as an outline */
-.template-southhealing #compliance-cta .btn-primary {
+.template-healingbuds #compliance-cta .btn-primary {
     background-color: transparent;
     color: hsl(var(--tenant-color-text));
     border: 1px solid hsl(var(--tenant-color-border));
 }
 
-.template-southhealing #compliance-cta .btn-primary:hover {
+.template-healingbuds #compliance-cta .btn-primary:hover {
     background-color: hsl(var(--tenant-color-primary) / 0.05);
     box-shadow: none;
     transform: none;
