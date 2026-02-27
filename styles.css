@@ -89,15 +89,26 @@
 /* =========================
    HERO — HeroVideo component
 
+   Lovable source (Index.tsx lines 76-200):
+     - Pill badge: "Seed to Sale Traceability"
+     - h1: "Pharmaceutical-Grade" + span.text-highlight "Medical Cannabis"
+     - p: description paragraph
+     - Two buttons: gold "Check Eligibility" + ghost "Sign In"
+     - Trust motifs: 4 inline icon+label pairs
+
+   HeroVideo only renders: h1, p (subtitle), ONE <a> button
+   Everything else injected via CSS pseudo-elements.
+
    DOM:
-     #hero > section.relative.min-h-[700px] (or min-h-screen)
+     #hero > section.relative.min-h-screen
        video
        div.absolute (overlay)
-       div.relative.z-10.container (content)
-         div.mb-8 > div.rounded-full > img   ← LOGO (hide this)
-         h1.font-bold.text-white              ← TITLE
-         p.text-white/80                      ← SUBTITLE (make gold+big)
-         div.flex > a.rounded-full            ← CTA BUTTON (make gold)
+       div.relative.z-10.container.flex.flex-col.text-center.items-center
+         (optional) div (logo — hide)
+         h1.font-bold.text-white
+         p.text-white/80
+         div.flex (button wrapper)
+           a (CTA)
    ========================= */
 
 /* Full viewport hero */
@@ -110,15 +121,33 @@
     display: none !important;
 }
 
-/* Title — white, large */
+/* ---- PILL BADGE ---- injected as ::before on h1 */
+.template-healingbuds #hero h1::before {
+    content: '\2B21  Seed to Sale Traceability';
+    display: block;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    color: white !important;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    padding: 0.5rem 1.25rem;
+    width: fit-content;
+    margin: 0 auto 2rem auto;
+    letter-spacing: 0.02em;
+    line-height: 1.5;
+}
+
+/* ---- TITLE ---- white, large */
 .template-healingbuds #hero h1 {
     color: white !important;
     font-weight: 700 !important;
     margin-bottom: 0.25rem !important;
 }
 
-/* Subtitle — GOLD, heading-sized to match Lovable's "Medical Cannabis"
-   This is the <p> element right after h1 in the content container */
+/* ---- SUBTITLE ---- GOLD, heading-sized "Medical Cannabis" */
 .template-healingbuds #hero p {
     color: hsl(var(--hb-gold)) !important;
     font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
@@ -130,24 +159,23 @@
     max-width: 100% !important;
 }
 
-/* Description text — injected via ::after since HeroVideo has no description field */
+/* ---- DESCRIPTION ---- injected as ::after on subtitle <p> */
 .template-healingbuds #hero p::after {
     content: 'From cultivation to delivery, every product is tracked and verified. Access quality-controlled, lab-tested medical cannabis with complete transparency.';
     display: block;
     margin-top: 1.5rem;
     font-size: 1.125rem !important;
     font-weight: 400 !important;
-    color: rgba(255, 255, 255, 0.75) !important;
+    color: rgba(255, 255, 255, 0.85) !important;
     font-family: var(--tenant-font-base) !important;
     line-height: 1.7 !important;
-    max-width: 550px;
+    max-width: 600px;
     margin-left: auto;
     margin-right: auto;
     letter-spacing: 0;
 }
 
-/* CTA button — gold filled
-   This is the <a> with inline bg-color */
+/* ---- PRIMARY CTA ---- gold "Check Eligibility" */
 .template-healingbuds #hero a {
     background-color: hsl(var(--hb-gold)) !important;
     background: hsl(var(--hb-gold)) !important;
@@ -156,11 +184,36 @@
     padding: 1rem 2.5rem !important;
     font-size: 1.125rem !important;
     font-weight: 600 !important;
+    box-shadow: 0 4px 20px hsla(42, 90%, 55%, 0.3) !important;
 }
 
 .template-healingbuds #hero a:hover {
     background-color: hsl(var(--hb-gold-hover)) !important;
     background: hsl(var(--hb-gold-hover)) !important;
+}
+
+/* ---- SECOND BUTTON ---- ghost "Sign In" injected as ::after on flex wrapper
+   The flex div.gap-4 makes this a flex item next to the real <a> */
+.template-healingbuds #hero .container > div:last-of-type::after {
+    content: 'Sign In';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.template-healingbuds #hero .container > div:last-of-type:hover::after {
+    background: rgba(255, 255, 255, 0.2);
 }
 
 
@@ -182,87 +235,93 @@
                  p (description — empty)
    ========================= */
 
-/* Pull trust badges up to overlap hero bottom */
+/* Pull trust badges up into hero area — Lovable has them inline inside hero */
 .template-healingbuds #hero-features {
     position: relative;
     z-index: 10;
-    margin-top: -4rem;
+    margin-top: -5rem;
+    pointer-events: none;
 }
 
-/* Compact strip — semi-transparent dark */
+/* Transparent strip — badges float over hero bottom */
 .template-healingbuds #hero-features section {
-    padding: 1.25rem 0 !important;
-    background-color: hsla(178, 48%, 16%, 0.85) !important;
-    background: hsla(178, 48%, 16%, 0.85) !important;
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 0.75rem 0 2rem 0 !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
 }
 
 /* Hide the empty heading block */
-.template-healingbuds #hero-features h2 {
-    display: none !important;
-}
-
+.template-healingbuds #hero-features h2,
 .template-healingbuds #hero-features h2 + p {
     display: none !important;
 }
 
-/* Also hide the heading wrapper div to reclaim space */
 .template-healingbuds #hero-features .container > div:first-child {
     display: none !important;
 }
 
-/* Force 4-column grid */
+/* Inline flex row — matches Lovable: flex-wrap justify-center gap-6 md:gap-10 */
 .template-healingbuds #hero-features .grid {
-    grid-template-columns: repeat(4, 1fr) !important;
-    gap: 0.5rem !important;
-    max-width: 800px !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 1.5rem !important;
+    max-width: 700px !important;
     margin: 0 auto !important;
 }
 
-/* Cards — transparent, compact, centered */
+/* Each badge — inline flex item with icon + label (not a card) */
 .template-healingbuds #hero-features .grid > div {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    padding: 0.5rem !important;
+    padding: 0 !important;
     border-radius: 0 !important;
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 0.5rem !important;
+    flex: none !important;
+    width: auto !important;
+}
+
+/* Icon containers — small inline */
+.template-healingbuds #hero-features .grid > div > div:first-child {
+    width: 1.75rem !important;
+    height: 1.75rem !important;
+    min-width: 1.75rem !important;
+    background: transparent !important;
+    border-radius: 0 !important;
+    display: flex !important;
     align-items: center !important;
     justify-content: center !important;
 }
 
-/* Icon containers — small */
-.template-healingbuds #hero-features .grid > div > div:first-child {
-    width: 2rem !important;
-    height: 2rem !important;
-    background: transparent !important;
-}
-
-/* Icons — gold */
+/* Icons — gold, matching Lovable's text-highlight at 28px but scaled for template */
 .template-healingbuds #hero-features .grid > div svg {
     color: hsl(var(--hb-gold)) !important;
-    width: 18px !important;
-    height: 18px !important;
+    width: 22px !important;
+    height: 22px !important;
 }
 
-/* Titles — small, compact, white text on dark strip */
+/* Labels — white/80, small, matching Lovable: text-sm font-medium text-white/80 */
 .template-healingbuds #hero-features h3 {
-    font-size: 0.8rem !important;
-    font-weight: 600 !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
     margin: 0 !important;
-    color: rgba(255, 255, 255, 0.9) !important;
+    color: rgba(255, 255, 255, 0.8) !important;
+    white-space: nowrap !important;
 }
 
-/* Hide descriptions */
+/* Hide descriptions (empty anyway) */
 .template-healingbuds #hero-features .grid > div > div:last-child > p {
     display: none !important;
 }
 
 @media (max-width: 768px) {
     .template-healingbuds #hero-features .grid {
-        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem 1.5rem !important;
     }
 }
 
