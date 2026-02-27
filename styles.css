@@ -1,19 +1,15 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 /* =====================================================================
-   HEALINGBUDS TEMPLATE — CSS targeting actual BudStacks component DOM
+   HEALINGBUDS TEMPLATE
 
-   Component source files read from:
+   ALL selectors use structural/positional targeting only.
+   NO @tailwind directives (not valid in runtime CSS).
+   NO escaped Tailwind class names (they fail in injected <style> tags).
+
+   Component DOM verified against:
    budstack-saas/nextjs_space/components/sections/
-
-   IMPORTANT: Many components use INLINE styles (style={{}}).
-   We must use !important to override inline styles.
    ===================================================================== */
 
 :root {
-    /* Core palette — matches Lovable theme.css */
     --tenant-color-primary: 178 48% 21%;
     --tenant-color-secondary: 178 48% 33%;
     --tenant-color-accent: 164 48% 53%;
@@ -22,31 +18,24 @@
     --tenant-color-text: 172 32% 20%;
     --tenant-color-heading: 172 32% 20%;
     --tenant-color-border: 165 18% 86%;
-
-    /* Gold highlight — signature Lovable accent */
+    --tenant-font-base: 'Plus Jakarta Sans', 'Inter', sans-serif;
+    --tenant-font-heading: 'Plus Jakarta Sans', 'Inter', sans-serif;
     --hb-gold: 42 90% 55%;
     --hb-gold-hover: 42 90% 48%;
     --hb-gold-fg: 42 95% 12%;
     --hb-dark-teal: 168 30% 14%;
-    --hb-muted-bg: 160 14% 93%;
-
-    /* Typography */
-    --tenant-font-base: 'Plus Jakarta Sans', 'Inter', sans-serif;
-    --tenant-font-heading: 'Plus Jakarta Sans', 'Inter', sans-serif;
 }
 
 
-/* =====================================================================
-   GLOBAL WRAPPER
-   ===================================================================== */
+/* =========================
+   GLOBAL
+   ========================= */
 
 .template-healingbuds {
     font-family: var(--tenant-font-base);
     background-color: hsl(var(--tenant-color-background));
     color: hsl(var(--tenant-color-text));
-    letter-spacing: -0.01em;
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 .template-healingbuds h1,
@@ -58,97 +47,79 @@
     letter-spacing: -0.02em;
 }
 
-.template-healingbuds h1 { line-height: 1.1; }
-.template-healingbuds p { line-height: 1.7; }
 
+/* =========================
+   NAV — NavDark component
 
-/* =====================================================================
-   NAVDARK — Override floating glassmorphic → solid full-width bar
+   DOM: <nav> > <div style="borderRadius:16px; bg:rgba(42,61,58,0.95)"> > <div class="px-6 flex">
+   All styling is inline → must use !important
+   ========================= */
 
-   Component DOM (NavDark.tsx):
-     <nav class="fixed top-0..." style="padding: 8px 8px 0">
-       <div class="mx-auto..." style="borderRadius:16px; backgroundColor:rgba(42,61,58,0.95); backdropFilter:blur(20px); border:1px solid rgba(255,255,255,0.1)">
-         <div class="px-6 flex items-center justify-between" style="height:72px">
-
-   ALL these are inline styles → need !important
-   ===================================================================== */
-
-/* Remove outer padding so bar sits flush */
-.template-healingbuds nav.fixed {
+.template-healingbuds nav {
     padding: 0 !important;
 }
 
-/* Inner container: solid full-width, no rounding, no glass */
-.template-healingbuds nav.fixed > div {
+.template-healingbuds nav > div {
     max-width: 100% !important;
     border-radius: 0 !important;
     border: none !important;
     background-color: hsl(var(--hb-dark-teal)) !important;
+    background: hsl(var(--hb-dark-teal)) !important;
     backdrop-filter: none !important;
     -webkit-backdrop-filter: none !important;
     box-shadow: none !important;
 }
 
-/* Gold accent line under nav — Lovable: h-[2px] bg-[#EAB308]/60 */
-.template-healingbuds nav.fixed > div::after {
+/* Gold accent line under nav */
+.template-healingbuds nav > div::after {
     content: '';
     display: block;
     height: 2px;
     background: hsla(42, 90%, 55%, 0.6);
 }
 
-/* Nav inner bar height */
-.template-healingbuds nav.fixed > div > div.flex {
-    height: 72px !important;
-}
-
-/* Primary CTA in nav — solid green pill (Lovable: bg-emerald-500) */
-.template-healingbuds nav.fixed a.rounded-full:first-of-type {
+/* Primary CTA in nav — make it solid green instead of glass */
+.template-healingbuds nav a[style*="rgba(255,255,255,0.18)"] {
     background: hsl(160 50% 42%) !important;
     border: none !important;
-    color: white !important;
     backdrop-filter: none !important;
-    font-weight: 600;
-}
-
-.template-healingbuds nav.fixed a.rounded-full:first-of-type:hover {
-    background: hsl(160 50% 48%) !important;
 }
 
 
-/* =====================================================================
+/* =========================
    HERO — HeroVideo component
 
-   Component DOM (HeroVideo.tsx):
-     <section class="relative min-h-screen flex items-center overflow-hidden">
-       <video class="absolute inset-0..."/>
-       <div class="absolute inset-0 z-[1]" style="background:...">  ← overlay
-       <div class="relative z-10 container mx-auto px-6...">
-         <motion.h1 class="text-4xl...font-bold text-white mb-4">title</motion.h1>
-         <motion.p class="text-base...text-white/80 mb-8">subtitle</motion.p>
-         <motion.div class="flex...gap-4">
-           <a class="px-10 py-4...rounded-full" style="backgroundColor:hsl(var(--tenant-color-primary))">CTA</a>
-         </motion.div>
-       </div>
-   ===================================================================== */
+   DOM:
+     #hero > section.relative.min-h-[700px] (or min-h-screen)
+       video
+       div.absolute (overlay)
+       div.relative.z-10.container (content)
+         div.mb-8 > div.rounded-full > img   ← LOGO (hide this)
+         h1.font-bold.text-white              ← TITLE
+         p.text-white/80                      ← SUBTITLE (make gold+big)
+         div.flex > a.rounded-full            ← CTA BUTTON (make gold)
+   ========================= */
 
-/* Full viewport height */
-.template-healingbuds #hero > section {
+/* Full viewport hero */
+.template-healingbuds #hero section {
     min-height: 100vh !important;
 }
 
-/* Hero heading — white, large */
+/* Hide the circular centered logo in hero */
+.template-healingbuds #hero .container > div:first-child {
+    display: none !important;
+}
+
+/* Title — white, large */
 .template-healingbuds #hero h1 {
     color: white !important;
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    font-weight: 700;
+    font-weight: 700 !important;
     margin-bottom: 0.25rem !important;
 }
 
-/* Hero subtitle (p.text-white\/80) — style as GOLD heading continuation
-   In Lovable: "Medical Cannabis" is gold, same size as h1 */
-.template-healingbuds #hero p.text-white\/80,
-.template-healingbuds #hero .text-white\/80 {
+/* Subtitle — GOLD, heading-sized to match Lovable's "Medical Cannabis"
+   This is the <p> element right after h1 in the content container */
+.template-healingbuds #hero p {
     color: hsl(var(--hb-gold)) !important;
     font-size: clamp(2.5rem, 6vw, 4.5rem) !important;
     font-weight: 700 !important;
@@ -159,106 +130,110 @@
     max-width: 100% !important;
 }
 
-/* Hero CTA button — gold filled (Lovable: bg-highlight) */
-.template-healingbuds #hero a.rounded-full {
+/* CTA button — gold filled
+   This is the <a> with inline bg-color */
+.template-healingbuds #hero a {
     background-color: hsl(var(--hb-gold)) !important;
+    background: hsl(var(--hb-gold)) !important;
     color: hsl(var(--hb-gold-fg)) !important;
     border-radius: 0.5rem !important;
     padding: 1rem 2.5rem !important;
     font-size: 1.125rem !important;
     font-weight: 600 !important;
-    transition: all 0.2s ease !important;
 }
 
-.template-healingbuds #hero a.rounded-full:hover {
+.template-healingbuds #hero a:hover {
     background-color: hsl(var(--hb-gold-hover)) !important;
-    transform: scale(1.03);
+    background: hsl(var(--hb-gold-hover)) !important;
 }
 
 
-/* =====================================================================
-   HERO-FEATURES — Trust badge strip below hero
+/* =========================
+   HERO-FEATURES — Features component (trust badge strip)
 
-   Component DOM (Features.tsx):
-     <section class="py-8 sm:py-10" style="backgroundColor:hsl(var(--tenant-color-background))">
-       <div class="container mx-auto px-6">
-         <motion.div class="text-center max-w-3xl mx-auto mb-8">
-           <h2 class="text-3xl...font-bold mb-6">heading</h2>
-           <p class="text-lg">subtitle</p>
-         </motion.div>
-         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
-           <motion.div class="flex gap-4 p-6 rounded-xl" style="backgroundColor:...; border:...">
-             <div class="w-12 h-12 rounded-lg flex items-center justify-center">
-               <Icon size={24} style="color:..."/>
-             </div>
-             <div>
-               <h3 class="text-lg font-bold mb-1">title</h3>
-               <p class="text-sm leading-relaxed">description</p>
-             </div>
-           </motion.div>
-   ===================================================================== */
+   DOM:
+     #hero-features > section (outer from renderer)
+       section.py-8 style="bg:background" (inner from Features)
+         div.container
+           div.text-center.max-w-3xl (heading wrapper — HIDE)
+             h2 + p
+           div.grid.md:grid-cols-2.lg:grid-cols-3
+             div.flex.gap-4.p-6.rounded-xl style="bg:surface; border:..."
+               div.w-12.h-12.rounded-lg (icon)
+                 <svg> (icon)
+               div
+                 h3 (title)
+                 p (description — empty)
+   ========================= */
 
-/* Compact strip — minimal padding */
-.template-healingbuds #hero-features > section {
+/* Compact strip with border */
+.template-healingbuds #hero-features section {
     padding: 1rem 0 !important;
     background-color: hsl(var(--tenant-color-surface)) !important;
+    background: hsl(var(--tenant-color-surface)) !important;
     border-top: 1px solid hsl(var(--tenant-color-border));
     border-bottom: 1px solid hsl(var(--tenant-color-border));
 }
 
-/* Hide the empty heading + subtitle */
-.template-healingbuds #hero-features .text-center.max-w-3xl {
+/* Hide the empty heading block */
+.template-healingbuds #hero-features h2 {
     display: none !important;
 }
 
-/* 4-column grid for trust badges */
+.template-healingbuds #hero-features h2 + p {
+    display: none !important;
+}
+
+/* Also hide the heading wrapper div to reclaim space */
+.template-healingbuds #hero-features .container > div:first-child {
+    display: none !important;
+}
+
+/* Force 4-column grid */
 .template-healingbuds #hero-features .grid {
     grid-template-columns: repeat(4, 1fr) !important;
     gap: 0.5rem !important;
-    max-width: 800px;
-    margin: 0 auto;
+    max-width: 800px !important;
+    margin: 0 auto !important;
 }
 
-/* Each badge card — transparent, no border, compact */
+/* Cards — transparent, compact, centered */
 .template-healingbuds #hero-features .grid > div {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
-    padding: 0.75rem 0.5rem !important;
+    padding: 0.5rem !important;
     border-radius: 0 !important;
-    align-items: center;
-    justify-content: center;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
-/* Icon containers — smaller, gold-tinted */
-.template-healingbuds #hero-features .w-12 {
+/* Icon containers — small */
+.template-healingbuds #hero-features .grid > div > div:first-child {
     width: 2rem !important;
     height: 2rem !important;
-    background-color: transparent !important;
-    border-radius: 9999px !important;
+    background: transparent !important;
 }
 
-/* Icons — gold color */
-.template-healingbuds #hero-features .w-12 svg {
+/* Icons — gold */
+.template-healingbuds #hero-features .grid > div svg {
     color: hsl(var(--hb-gold)) !important;
-    width: 20px !important;
-    height: 20px !important;
+    width: 18px !important;
+    height: 18px !important;
 }
 
-/* Badge titles — small, dark text */
+/* Titles — small, compact */
 .template-healingbuds #hero-features h3 {
     font-size: 0.8rem !important;
     font-weight: 600 !important;
-    color: hsl(var(--tenant-color-text)) !important;
-    margin-bottom: 0 !important;
+    margin: 0 !important;
 }
 
-/* Hide empty descriptions */
-.template-healingbuds #hero-features .text-sm.leading-relaxed {
-    display: none;
+/* Hide descriptions */
+.template-healingbuds #hero-features .grid > div > div:last-child > p {
+    display: none !important;
 }
 
-/* Mobile: 2 columns */
 @media (max-width: 768px) {
     .template-healingbuds #hero-features .grid {
         grid-template-columns: repeat(2, 1fr) !important;
@@ -266,204 +241,186 @@
 }
 
 
-/* =====================================================================
-   HOW-IT-WORKS — ValueProps component (3 numbered step cards)
+/* =========================
+   HOW-IT-WORKS — ValueProps component
 
-   Component DOM (ValueProps.tsx):
-     <section class="py-8 sm:py-10" style="backgroundColor:hsl(var(--tenant-color-surface))">
-       <div class="container mx-auto px-6">
-         <motion.div class="text-center max-w-3xl mx-auto mb-8">
-           <h2>heading</h2>
-           <p>subtitle</p>
-         </motion.div>
-         <div class="grid md:grid-cols-2 lg:grid-cols-3 max-w-5xl mx-auto gap-8">
-           <motion.div class="text-center p-8 rounded-2xl" style="backgroundColor:...; border:...">
-             <div class="w-16 h-16 mx-auto mb-6 rounded-full flex items-center justify-center" style="backgroundColor:hsl(var(--tenant-color-primary)/0.1)">
-               <Icon size={32} style="color:hsl(var(--tenant-color-primary))"/>
-             </div>
-             <h3 class="text-xl font-bold mb-3">title</h3>
-             <p>description</p>
-           </motion.div>
-   ===================================================================== */
+   DOM:
+     #how-it-works > section
+       section.py-8 style="bg:surface"
+         div.container
+           div.text-center.max-w-3xl (heading)
+           div.grid.lg:grid-cols-3.max-w-5xl
+             div.text-center.p-8.rounded-2xl style="bg:background; border:..."
+               div.w-16.h-16.rounded-full style="bg:primary/0.1"
+                 <svg style="color:primary"> ← HIDE, replace with number
+               h3
+               p
+   ========================= */
 
-/* Light muted background — Lovable: bg-muted/30 */
-.template-healingbuds #how-it-works > section {
-    background-color: hsl(var(--hb-muted-bg) / 0.3) !important;
+/* Muted background */
+.template-healingbuds #how-it-works section {
+    background-color: hsl(160 14% 95%) !important;
+    background: hsl(160 14% 95%) !important;
 }
 
-/* Cards — light background with subtle border, hover gold */
-.template-healingbuds #how-it-works .rounded-2xl {
-    background-color: hsl(var(--tenant-color-surface) / 0.5) !important;
+/* Cards — subtle border, hover effect */
+.template-healingbuds #how-it-works .grid > div {
+    background-color: hsl(0 0% 100% / 0.5) !important;
+    background: hsl(0 0% 100% / 0.5) !important;
     border: 1px solid hsl(var(--tenant-color-border) / 0.5) !important;
     transition: border-color 0.2s ease;
 }
 
-.template-healingbuds #how-it-works .rounded-2xl:hover {
+.template-healingbuds #how-it-works .grid > div:hover {
     border-color: hsla(42, 90%, 55%, 0.4) !important;
 }
 
-/* Icon circles — gold-tinted background */
-.template-healingbuds #how-it-works .w-16.h-16 {
+/* Number circles — gold tint */
+.template-healingbuds #how-it-works .rounded-full {
     background-color: hsla(42, 90%, 55%, 0.1) !important;
+    background: hsla(42, 90%, 55%, 0.1) !important;
     width: 3rem !important;
     height: 3rem !important;
-    margin-bottom: 1rem !important;
-    transition: background-color 0.2s ease;
 }
 
-.template-healingbuds #how-it-works .rounded-2xl:hover .w-16.h-16 {
+.template-healingbuds #how-it-works .grid > div:hover .rounded-full {
     background-color: hsla(42, 90%, 55%, 0.2) !important;
+    background: hsla(42, 90%, 55%, 0.2) !important;
 }
 
-/* Hide the default SVG icon (falls back to Star since "1" isn't in iconMap) */
-.template-healingbuds #how-it-works .w-16.h-16 svg {
+/* Hide SVG icons (they default to Star since "1" isn't in iconMap) */
+.template-healingbuds #how-it-works .rounded-full svg {
     display: none !important;
 }
 
-/* Show numbers via ::before pseudo-elements */
-.template-healingbuds #how-it-works .grid > div:nth-child(1) .w-16.h-16::before {
+/* Show step numbers */
+.template-healingbuds #how-it-works .grid > div:nth-child(1) .rounded-full::before {
     content: '1';
     font-size: 1.25rem;
     font-weight: 700;
     color: hsl(var(--hb-gold));
 }
-
-.template-healingbuds #how-it-works .grid > div:nth-child(2) .w-16.h-16::before {
+.template-healingbuds #how-it-works .grid > div:nth-child(2) .rounded-full::before {
     content: '2';
     font-size: 1.25rem;
     font-weight: 700;
     color: hsl(var(--hb-gold));
 }
-
-.template-healingbuds #how-it-works .grid > div:nth-child(3) .w-16.h-16::before {
+.template-healingbuds #how-it-works .grid > div:nth-child(3) .rounded-full::before {
     content: '3';
     font-size: 1.25rem;
     font-weight: 700;
     color: hsl(var(--hb-gold));
 }
 
-/* Section heading */
+/* Heading — dark text */
 .template-healingbuds #how-it-works h2 {
     color: hsl(var(--tenant-color-heading)) !important;
 }
 
 
-/* =====================================================================
-   HOW-IT-WORKS-CTA — CTABanner styled as inline section button
+/* =========================
+   HOW-IT-WORKS-CTA — CTABanner (seamless inline button)
 
-   Component DOM (CTABanner.tsx):
-     <section class="py-6 sm:py-8" style="background:linear-gradient(135deg, hsl(primary) 0%, hsl(secondary) 100%)">
-       <div class="container mx-auto px-6 text-center">
-         <motion.h2 class="text-3xl...font-bold text-white mb-6">heading</motion.h2>
-         <motion.p class="text-base...text-white/90 mb-6">subtitle</motion.p>
-         <motion.div>
-           <a class="inline-block px-10 py-4...rounded-full" style="backgroundColor:white; color:hsl(primary)">CTA</a>
-         </motion.div>
-         <motion.p class="mt-6 text-white/70 text-sm">No credit card...</motion.p>
-       </div>
-     </section>
-   ===================================================================== */
+   DOM:
+     #how-it-works-cta > section
+       section.py-6 style="background:linear-gradient(...)"  ← OVERRIDE
+         div.container.text-center
+           h2.text-white (heading " ")       ← HIDE
+           p.text-white/90 (subtitle " ")    ← HIDE
+           div > a.rounded-full style="bg:white; color:primary"  ← RESTYLE
+           p.text-white/70 ("No credit card...")  ← HIDE
+   ========================= */
 
-/* Override gradient bg to match muted section above */
-.template-healingbuds #how-it-works-cta > section {
-    background: hsl(var(--hb-muted-bg) / 0.3) !important;
+/* Override gradient to match muted bg of section above */
+.template-healingbuds #how-it-works-cta section {
+    background: hsl(160 14% 95%) !important;
     padding-top: 0 !important;
     padding-bottom: 3rem !important;
 }
 
-/* Hide empty heading, subtitle, and "No credit card" text */
+/* Hide all text content */
 .template-healingbuds #how-it-works-cta h2 {
     display: none !important;
 }
 
-.template-healingbuds #how-it-works-cta .text-white\/90,
-.template-healingbuds #how-it-works-cta p.text-white\/90 {
+.template-healingbuds #how-it-works-cta p {
     display: none !important;
 }
 
-.template-healingbuds #how-it-works-cta .text-white\/70,
-.template-healingbuds #how-it-works-cta p.text-white\/70 {
-    display: none !important;
-}
-
-/* CTA button — teal primary (Lovable: primary colored button) */
-.template-healingbuds #how-it-works-cta a.rounded-full {
+/* CTA button — teal primary */
+.template-healingbuds #how-it-works-cta a {
     background-color: hsl(var(--tenant-color-primary)) !important;
+    background: hsl(var(--tenant-color-primary)) !important;
     color: white !important;
     border-radius: 0.5rem !important;
     padding: 0.875rem 2rem !important;
     font-size: 1rem !important;
-    font-weight: 600 !important;
-    transition: all 0.2s ease !important;
 }
 
-.template-healingbuds #how-it-works-cta a.rounded-full:hover {
+.template-healingbuds #how-it-works-cta a:hover {
     background-color: hsl(175 42% 30%) !important;
-    transform: translateY(-1px) !important;
+    background: hsl(175 42% 30%) !important;
 }
 
 
-/* =====================================================================
-   COMPLIANCE — Features component (2-column info blocks)
+/* =========================
+   COMPLIANCE — Features component (2-column info)
+   Same DOM as hero-features but with 2 items + visible descriptions
+   ========================= */
 
-   Same DOM structure as #hero-features but with 2 items (descriptions visible)
-   Lovable: bg-primary/5, border-y, icon+text horizontal layout
-   ===================================================================== */
-
-/* Light primary-tinted background with top/bottom borders */
-.template-healingbuds #compliance > section {
+/* Light primary-tinted background */
+.template-healingbuds #compliance section {
     background-color: hsl(178 48% 21% / 0.05) !important;
+    background: hsl(178 48% 21% / 0.05) !important;
     border-top: 1px solid hsl(178 48% 21% / 0.1);
     border-bottom: 1px solid hsl(178 48% 21% / 0.1);
     padding: 3rem 0 !important;
 }
 
-/* Hide empty heading + subtitle */
-.template-healingbuds #compliance .text-center.max-w-3xl {
+/* Hide empty heading */
+.template-healingbuds #compliance h2 {
     display: none !important;
 }
 
-/* 2-column grid */
+.template-healingbuds #compliance h2 + p {
+    display: none !important;
+}
+
+.template-healingbuds #compliance .container > div:first-child {
+    display: none !important;
+}
+
+/* Force 2-column grid */
 .template-healingbuds #compliance .grid {
     grid-template-columns: repeat(2, 1fr) !important;
 }
 
-/* Each card — transparent bg, no border */
+/* Cards — transparent */
 .template-healingbuds #compliance .grid > div {
     background: transparent !important;
     border: none !important;
     box-shadow: none !important;
 }
 
-/* Icon containers — primary tinted */
-.template-healingbuds #compliance .w-12 {
+/* Icon containers */
+.template-healingbuds #compliance .grid > div > div:first-child {
     width: 3.5rem !important;
     height: 3.5rem !important;
     border-radius: 1rem !important;
     background-color: hsl(178 48% 21% / 0.1) !important;
+    background: hsl(178 48% 21% / 0.1) !important;
 }
 
-/* Icons — primary teal */
-.template-healingbuds #compliance .w-12 svg {
+.template-healingbuds #compliance svg {
     color: hsl(var(--tenant-color-primary)) !important;
-    width: 1.5rem !important;
-    height: 1.5rem !important;
 }
 
-/* Titles */
 .template-healingbuds #compliance h3 {
-    font-size: 1.05rem !important;
-    font-weight: 600 !important;
     color: hsl(var(--tenant-color-heading)) !important;
+    font-size: 1.05rem !important;
 }
 
-/* Descriptions — muted text */
-.template-healingbuds #compliance .text-sm.leading-relaxed {
-    color: hsl(165 12% 42%) !important;
-    font-size: 0.875rem !important;
-}
-
-/* Mobile: stack to 1 column */
 @media (max-width: 768px) {
     .template-healingbuds #compliance .grid {
         grid-template-columns: 1fr !important;
@@ -471,17 +428,16 @@
 }
 
 
-/* =====================================================================
-   COMPLIANCE-CTA — Outline button flowing from compliance section
-   ===================================================================== */
+/* =========================
+   COMPLIANCE-CTA — Outline button
+   ========================= */
 
-.template-healingbuds #compliance-cta > section {
+.template-healingbuds #compliance-cta section {
     background: hsl(178 48% 21% / 0.05) !important;
     padding-top: 0 !important;
     padding-bottom: 3rem !important;
 }
 
-/* Hide heading, subtitle, "No credit card" */
 .template-healingbuds #compliance-cta h2 {
     display: none !important;
 }
@@ -490,32 +446,29 @@
     display: none !important;
 }
 
-/* Outline button (Lovable: variant="outline" size="sm") */
-.template-healingbuds #compliance-cta a.rounded-full {
+/* Outline button */
+.template-healingbuds #compliance-cta a {
     background-color: transparent !important;
+    background: transparent !important;
     color: hsl(var(--tenant-color-text)) !important;
     border: 1px solid hsl(var(--tenant-color-border)) !important;
     border-radius: 0.5rem !important;
     padding: 0.5rem 1.25rem !important;
     font-size: 0.875rem !important;
     font-weight: 500 !important;
-    transition: all 0.2s ease !important;
 }
 
-.template-healingbuds #compliance-cta a.rounded-full:hover {
+.template-healingbuds #compliance-cta a:hover {
     background-color: hsl(var(--tenant-color-primary) / 0.05) !important;
-    border-color: hsl(var(--tenant-color-primary) / 0.3) !important;
-    transform: none !important;
+    background: hsl(var(--tenant-color-primary) / 0.05) !important;
 }
 
 
-/* =====================================================================
-   GET-STARTED — Final CTA section
+/* =========================
+   GET-STARTED — Final CTA
+   ========================= */
 
-   Lovable: white bg, centered heading, description, teal button
-   ===================================================================== */
-
-.template-healingbuds #get-started > section {
+.template-healingbuds #get-started section {
     background: hsl(var(--tenant-color-background)) !important;
     padding: 4rem 0 !important;
 }
@@ -524,108 +477,65 @@
 .template-healingbuds #get-started h2 {
     color: hsl(var(--tenant-color-heading)) !important;
     font-size: 2.25rem !important;
-    font-weight: 700 !important;
 }
 
-/* Subtitle — muted text, visible */
-.template-healingbuds #get-started .text-white\/90,
-.template-healingbuds #get-started p.text-white\/90 {
+/* Subtitle — muted, visible */
+.template-healingbuds #get-started .container > p {
     color: hsl(165 12% 42%) !important;
     font-size: 1.125rem !important;
 }
 
-/* CTA button — teal primary */
-.template-healingbuds #get-started a.rounded-full {
+/* CTA button — teal */
+.template-healingbuds #get-started a {
     background-color: hsl(var(--tenant-color-primary)) !important;
+    background: hsl(var(--tenant-color-primary)) !important;
     color: white !important;
     border-radius: 0.5rem !important;
     padding: 1rem 2.5rem !important;
     font-size: 1.125rem !important;
-    font-weight: 600 !important;
-    transition: all 0.2s ease !important;
 }
 
-.template-healingbuds #get-started a.rounded-full:hover {
-    background-color: hsl(175 42% 30%) !important;
-    transform: translateY(-1px) !important;
-}
-
-/* Hide "No credit card" text */
-.template-healingbuds #get-started .text-white\/70,
-.template-healingbuds #get-started p.text-white\/70 {
+/* Hide "No credit card" text — target the last p in the container */
+.template-healingbuds #get-started .container > p:last-child {
     display: none !important;
 }
 
 
-/* =====================================================================
+/* =========================
    FOOTER — FooterFull component
 
-   Component DOM (FooterFull.tsx):
-     <footer class="pt-16 pb-8" style="backgroundColor:hsl(surface); color:hsl(heading)">
-       <div class="container mx-auto px-6">
-         <div class="grid md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
-           <div class="lg:col-span-2">  ← brand column
-             <span class="text-xl font-bold">businessName</span>
-             <p class="text-white/70">tagline</p>
-           </div>
-           <div>  ← link columns
-             <h4 class="font-bold text-sm uppercase tracking-wider mb-4 text-white/90">title</h4>
-             <ul><li><a class="text-sm text-white/60 hover:text-white">link</a></li></ul>
-           </div>
-         </div>
-         <p class="text-xs text-white/40 mb-8">disclaimer</p>
-         <div class="pt-6 flex...">
-           <p class="text-sm text-white/50">copyright</p>
-           <p class="text-xs text-white/30">Powered by BudStacks</p>
-         </div>
-       </div>
-     </footer>
-   ===================================================================== */
+   DOM:
+     footer.pt-16.pb-8 style="bg:surface; color:heading"
+       div.container
+         div.grid (brand + link columns)
+         p (disclaimer)
+         div.pt-6 (bottom bar)
+   ========================= */
 
-/* Dark teal background — override inline style */
 .template-healingbuds footer {
     background-color: hsl(178 48% 21%) !important;
+    background: hsl(178 48% 21%) !important;
     color: white !important;
 }
 
-/* Brand name */
-.template-healingbuds footer .text-xl.font-bold {
+.template-healingbuds footer span {
     color: white !important;
 }
 
-/* Tagline */
-.template-healingbuds footer .text-white\/70 {
-    color: rgba(255, 255, 255, 0.6) !important;
-}
-
-/* Column headers — uppercase with wider tracking */
 .template-healingbuds footer h4 {
     color: rgba(255, 255, 255, 0.9) !important;
     font-size: 0.8rem !important;
     letter-spacing: 0.08em;
 }
 
-/* Footer links */
-.template-healingbuds footer a.text-white\/60 {
-    transition: all 0.2s ease;
+.template-healingbuds footer a {
+    transition: color 0.2s ease;
 }
 
-.template-healingbuds footer a.text-white\/60:hover,
 .template-healingbuds footer a:hover {
     color: white !important;
 }
 
-/* Disclaimer */
-.template-healingbuds footer .text-white\/40 {
-    color: rgba(255, 255, 255, 0.35) !important;
-}
-
-/* Copyright */
-.template-healingbuds footer .text-white\/50 {
-    color: rgba(255, 255, 255, 0.4) !important;
-}
-
-/* Bottom border */
-.template-healingbuds footer .pt-6 {
-    border-top-color: rgba(255, 255, 255, 0.1) !important;
+.template-healingbuds footer p {
+    color: rgba(255, 255, 255, 0.5) !important;
 }
