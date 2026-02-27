@@ -130,6 +130,22 @@
     max-width: 100% !important;
 }
 
+/* Description text — injected via ::after since HeroVideo has no description field */
+.template-healingbuds #hero p::after {
+    content: 'From cultivation to delivery, every product is tracked and verified. Access quality-controlled, lab-tested medical cannabis with complete transparency.';
+    display: block;
+    margin-top: 1.5rem;
+    font-size: 1.125rem !important;
+    font-weight: 400 !important;
+    color: rgba(255, 255, 255, 0.75) !important;
+    font-family: var(--tenant-font-base) !important;
+    line-height: 1.7 !important;
+    max-width: 550px;
+    margin-left: auto;
+    margin-right: auto;
+    letter-spacing: 0;
+}
+
 /* CTA button — gold filled
    This is the <a> with inline bg-color */
 .template-healingbuds #hero a {
@@ -166,13 +182,22 @@
                  p (description — empty)
    ========================= */
 
-/* Compact strip with border */
+/* Pull trust badges up to overlap hero bottom */
+.template-healingbuds #hero-features {
+    position: relative;
+    z-index: 10;
+    margin-top: -4rem;
+}
+
+/* Compact strip — semi-transparent dark */
 .template-healingbuds #hero-features section {
-    padding: 1rem 0 !important;
-    background-color: hsl(var(--tenant-color-surface)) !important;
-    background: hsl(var(--tenant-color-surface)) !important;
-    border-top: 1px solid hsl(var(--tenant-color-border));
-    border-bottom: 1px solid hsl(var(--tenant-color-border));
+    padding: 1.25rem 0 !important;
+    background-color: hsla(178, 48%, 16%, 0.85) !important;
+    background: hsla(178, 48%, 16%, 0.85) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Hide the empty heading block */
@@ -222,11 +247,12 @@
     height: 18px !important;
 }
 
-/* Titles — small, compact */
+/* Titles — small, compact, white text on dark strip */
 .template-healingbuds #hero-features h3 {
     font-size: 0.8rem !important;
     font-weight: 600 !important;
     margin: 0 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
 }
 
 /* Hide descriptions */
