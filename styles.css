@@ -235,12 +235,14 @@
                  p (description — empty)
    ========================= */
 
-/* Pull trust badges up into hero area — Lovable has them inline inside hero
-   below the two CTA buttons. Large negative margin to sit right under buttons. */
+/* Pull trust badges up into hero area — Lovable has them inline inside hero.
+   margin-top shifts up, margin-bottom compensates so subsequent sections
+   are NOT pulled up (prevents overlap with how-it-works). */
 .template-healingbuds #hero-features {
     position: relative;
     z-index: 20;
-    margin-top: -12rem;
+    margin-top: -5rem;
+    margin-bottom: 5rem;
     pointer-events: none;
 }
 
@@ -343,18 +345,29 @@
                p
    ========================= */
 
-/* Muted background — match Lovable py-16 lg:py-24 */
+/* Lovable: py-16 lg:py-24 bg-muted/30 */
 .template-healingbuds #how-it-works section {
     background-color: hsl(160 14% 95%) !important;
     background: hsl(160 14% 95%) !important;
     padding: 4rem 0 !important;
 }
 
-/* Cards — subtle border, hover effect */
+/* Lovable h2: text-3xl md:text-4xl font-bold mb-4
+   BudStacks default goes to text-5xl — override back to 2.25rem */
+.template-healingbuds #how-it-works h2 {
+    color: hsl(var(--tenant-color-heading)) !important;
+    font-size: 2.25rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 1rem !important;
+}
+
+/* Lovable: Card bg-card/50 border-border/50 hover:border-highlight/40
+   BudStacks p-8 → Lovable p-6 (1.5rem) */
 .template-healingbuds #how-it-works .grid > div {
     background-color: hsl(0 0% 100% / 0.5) !important;
     background: hsl(0 0% 100% / 0.5) !important;
     border: 1px solid hsl(var(--tenant-color-border) / 0.5) !important;
+    padding: 1.5rem !important;
     transition: border-color 0.2s ease;
 }
 
@@ -362,12 +375,14 @@
     border-color: hsla(42, 90%, 55%, 0.4) !important;
 }
 
-/* Number circles — gold tint */
+/* Lovable: w-12 h-12 rounded-full bg-highlight/10 mb-4
+   BudStacks default w-16 h-16 (4rem) → Lovable 3rem */
 .template-healingbuds #how-it-works .rounded-full {
     background-color: hsla(42, 90%, 55%, 0.1) !important;
     background: hsla(42, 90%, 55%, 0.1) !important;
     width: 3rem !important;
     height: 3rem !important;
+    margin-bottom: 1rem !important;
 }
 
 .template-healingbuds #how-it-works .grid > div:hover .rounded-full {
@@ -380,7 +395,7 @@
     display: none !important;
 }
 
-/* Show step numbers */
+/* Lovable: text-xl font-bold text-highlight → 1.25rem 700 */
 .template-healingbuds #how-it-works .grid > div:nth-child(1) .rounded-full::before {
     content: '1';
     font-size: 1.25rem;
@@ -400,9 +415,19 @@
     color: hsl(var(--hb-gold));
 }
 
-/* Heading — dark text */
-.template-healingbuds #how-it-works h2 {
-    color: hsl(var(--tenant-color-heading)) !important;
+/* Lovable h3: font-semibold text-lg mb-2 → 1.125rem 600
+   BudStacks default: text-xl font-bold (1.25rem 700) */
+.template-healingbuds #how-it-works h3 {
+    font-size: 1.125rem !important;
+    font-weight: 600 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Lovable p: text-sm text-muted-foreground → 0.875rem
+   BudStacks default: 1rem */
+.template-healingbuds #how-it-works .grid > div p {
+    font-size: 0.875rem !important;
+    color: hsl(var(--tenant-color-text) / 0.6) !important;
 }
 
 
@@ -456,13 +481,13 @@
    Same DOM as hero-features but with 2 items + visible descriptions
    ========================= */
 
-/* Light primary-tinted background — match Lovable py-12 bg-primary/5 border-y */
+/* Lovable: py-12 bg-primary/5 border-y border-primary/10 → 3rem padding */
 .template-healingbuds #compliance section {
     background-color: hsl(178 48% 21% / 0.05) !important;
     background: hsl(178 48% 21% / 0.05) !important;
     border-top: 1px solid hsl(178 48% 21% / 0.1);
     border-bottom: 1px solid hsl(178 48% 21% / 0.1);
-    padding: 3.5rem 0 !important;
+    padding: 3rem 0 !important;
 }
 
 /* Hide empty heading */
@@ -504,24 +529,26 @@
     background: hsl(178 48% 21% / 0.1) !important;
 }
 
+/* Lovable: w-7 h-7 text-primary → 1.75rem */
 .template-healingbuds #compliance svg {
     color: hsl(var(--tenant-color-primary)) !important;
-    width: 28px !important;
-    height: 28px !important;
+    width: 1.75rem !important;
+    height: 1.75rem !important;
 }
 
-/* Headings — Lovable: font-display text-lg font-semibold */
+/* Lovable h3: font-display text-lg font-semibold mb-2 → 1.125rem 600 */
 .template-healingbuds #compliance h3 {
     color: hsl(var(--tenant-color-heading)) !important;
     font-size: 1.125rem !important;
     font-weight: 600 !important;
+    margin-bottom: 0.5rem !important;
 }
 
-/* Descriptions — Lovable: text-sm text-muted-foreground */
+/* Lovable p: text-sm text-muted-foreground → 0.875rem */
 .template-healingbuds #compliance .grid > div > div:last-child > p {
     font-size: 0.875rem !important;
     line-height: 1.6 !important;
-    color: hsl(var(--tenant-color-text) / 0.7) !important;
+    color: hsl(var(--tenant-color-text) / 0.6) !important;
 }
 
 @media (max-width: 768px) {
@@ -535,12 +562,12 @@
    COMPLIANCE-CTA — Outline button
    ========================= */
 
-/* Seamless with compliance section above — same bg, centered button */
+/* Lovable: flex justify-center mt-8, same bg as compliance */
 .template-healingbuds #compliance-cta section {
     background: hsl(178 48% 21% / 0.05) !important;
     border-bottom: 1px solid hsl(178 48% 21% / 0.1) !important;
-    padding-top: 0.5rem !important;
-    padding-bottom: 2.5rem !important;
+    padding-top: 0 !important;
+    padding-bottom: 2rem !important;
 }
 
 .template-healingbuds #compliance-cta h2 {
