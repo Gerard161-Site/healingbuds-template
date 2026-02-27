@@ -123,7 +123,7 @@
 
 /* ---- PILL BADGE ---- injected as ::before on h1 */
 .template-healingbuds #hero h1::before {
-    content: '\2B21  Seed to Sale Traceability';
+    content: '\1F33F  Seed to Sale Traceability';
     display: block;
     font-size: 0.875rem !important;
     font-weight: 500 !important;
@@ -235,17 +235,18 @@
                  p (description — empty)
    ========================= */
 
-/* Pull trust badges up into hero area — Lovable has them inline inside hero */
+/* Pull trust badges up into hero area — Lovable has them inline inside hero
+   below the two CTA buttons. Large negative margin to sit right under buttons. */
 .template-healingbuds #hero-features {
     position: relative;
-    z-index: 10;
-    margin-top: -5rem;
+    z-index: 20;
+    margin-top: -12rem;
     pointer-events: none;
 }
 
-/* Transparent strip — badges float over hero bottom */
+/* Transparent — badges overlay the hero, no background of their own */
 .template-healingbuds #hero-features section {
-    padding: 0.75rem 0 2rem 0 !important;
+    padding: 0 !important;
     background: transparent !important;
     background-color: transparent !important;
     border: none !important;
@@ -342,10 +343,11 @@
                p
    ========================= */
 
-/* Muted background */
+/* Muted background — match Lovable py-16 lg:py-24 */
 .template-healingbuds #how-it-works section {
     background-color: hsl(160 14% 95%) !important;
     background: hsl(160 14% 95%) !important;
+    padding: 4rem 0 !important;
 }
 
 /* Cards — subtle border, hover effect */
@@ -454,13 +456,13 @@
    Same DOM as hero-features but with 2 items + visible descriptions
    ========================= */
 
-/* Light primary-tinted background */
+/* Light primary-tinted background — match Lovable py-12 bg-primary/5 border-y */
 .template-healingbuds #compliance section {
     background-color: hsl(178 48% 21% / 0.05) !important;
     background: hsl(178 48% 21% / 0.05) !important;
     border-top: 1px solid hsl(178 48% 21% / 0.1);
     border-bottom: 1px solid hsl(178 48% 21% / 0.1);
-    padding: 3rem 0 !important;
+    padding: 3.5rem 0 !important;
 }
 
 /* Hide empty heading */
@@ -476,9 +478,13 @@
     display: none !important;
 }
 
-/* Force 2-column grid */
+/* Force 2-column grid — max-w-5xl (64rem) matches ValueProps grid above */
 .template-healingbuds #compliance .grid {
     grid-template-columns: repeat(2, 1fr) !important;
+    max-width: 64rem !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    gap: 2rem !important;
 }
 
 /* Cards — transparent */
@@ -488,10 +494,11 @@
     box-shadow: none !important;
 }
 
-/* Icon containers */
+/* Icon containers — Lovable: w-14 h-14 rounded-2xl bg-primary/10 */
 .template-healingbuds #compliance .grid > div > div:first-child {
     width: 3.5rem !important;
     height: 3.5rem !important;
+    min-width: 3.5rem !important;
     border-radius: 1rem !important;
     background-color: hsl(178 48% 21% / 0.1) !important;
     background: hsl(178 48% 21% / 0.1) !important;
@@ -499,11 +506,22 @@
 
 .template-healingbuds #compliance svg {
     color: hsl(var(--tenant-color-primary)) !important;
+    width: 28px !important;
+    height: 28px !important;
 }
 
+/* Headings — Lovable: font-display text-lg font-semibold */
 .template-healingbuds #compliance h3 {
     color: hsl(var(--tenant-color-heading)) !important;
-    font-size: 1.05rem !important;
+    font-size: 1.125rem !important;
+    font-weight: 600 !important;
+}
+
+/* Descriptions — Lovable: text-sm text-muted-foreground */
+.template-healingbuds #compliance .grid > div > div:last-child > p {
+    font-size: 0.875rem !important;
+    line-height: 1.6 !important;
+    color: hsl(var(--tenant-color-text) / 0.7) !important;
 }
 
 @media (max-width: 768px) {
@@ -517,10 +535,12 @@
    COMPLIANCE-CTA — Outline button
    ========================= */
 
+/* Seamless with compliance section above — same bg, centered button */
 .template-healingbuds #compliance-cta section {
     background: hsl(178 48% 21% / 0.05) !important;
-    padding-top: 0 !important;
-    padding-bottom: 3rem !important;
+    border-bottom: 1px solid hsl(178 48% 21% / 0.1) !important;
+    padding-top: 0.5rem !important;
+    padding-bottom: 2.5rem !important;
 }
 
 .template-healingbuds #compliance-cta h2 {
