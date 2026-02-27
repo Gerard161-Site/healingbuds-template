@@ -598,36 +598,92 @@
 
 /* =========================
    GET-STARTED — Final CTA
+
+   Lovable source (Index.tsx lines 328-405):
+     - hb-icon-cta.webp h-28 centered (⚠️ can't inject — CSS url() sanitized)
+     - h2: text-3xl md:text-4xl font-bold text-foreground mb-4
+     - p: text-lg text-muted-foreground mb-8
+     - Button 1: size="lg" text-lg px-8 py-6 (teal primary)
+     - Button 2: size="lg" variant="outline" text-lg px-8 py-6 "Have Questions?"
+     - Section: py-16 lg:py-24 (light bg)
+
+   CTABanner DOM:
+     section style="background:linear-gradient(...)"  ← OVERRIDE to light
+       div.container.text-center
+         h2
+         p (subtitle)
+         div (button wrapper)
+           a (CTA)
+         p ("No credit card...") ← HIDE
    ========================= */
 
+/* Lovable: py-16 lg:py-24, light background (no gradient) */
 .template-healingbuds #get-started section {
     background: hsl(var(--tenant-color-background)) !important;
     padding: 4rem 0 !important;
 }
 
-/* Heading — dark text, visible */
+/* Lovable h2: text-3xl md:text-4xl font-bold text-foreground mb-4 */
 .template-healingbuds #get-started h2 {
     color: hsl(var(--tenant-color-heading)) !important;
     font-size: 2.25rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 1rem !important;
 }
 
-/* Subtitle — muted, visible */
+/* Lovable p: text-lg text-muted-foreground mb-8 */
 .template-healingbuds #get-started .container > p {
-    color: hsl(165 12% 42%) !important;
+    color: hsl(var(--tenant-color-text) / 0.6) !important;
     font-size: 1.125rem !important;
+    margin-bottom: 2rem !important;
 }
 
-/* CTA button — teal */
+/* Make button wrapper flex row for two side-by-side buttons */
+.template-healingbuds #get-started .container > div {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 1rem !important;
+    justify-content: center !important;
+}
+
+/* Lovable primary button: size="lg" text-lg px-8 py-6 bg-primary */
 .template-healingbuds #get-started a {
     background-color: hsl(var(--tenant-color-primary)) !important;
     background: hsl(var(--tenant-color-primary)) !important;
     color: white !important;
     border-radius: 0.5rem !important;
-    padding: 1rem 2.5rem !important;
+    padding: 1.25rem 2.5rem !important;
     font-size: 1.125rem !important;
+    font-weight: 600 !important;
 }
 
-/* Hide "No credit card" text — target the last p in the container */
+.template-healingbuds #get-started a:hover {
+    background-color: hsl(175 42% 28%) !important;
+    background: hsl(175 42% 28%) !important;
+}
+
+/* "Have Questions?" outline button — Lovable: variant="outline" size="lg" text-lg px-8 py-6 */
+.template-healingbuds #get-started .container > div::after {
+    content: 'Have Questions?';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 2.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: hsl(var(--tenant-color-text));
+    background: transparent;
+    border: 1px solid hsl(var(--tenant-color-border));
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.template-healingbuds #get-started .container > div:hover::after {
+    background: hsl(var(--tenant-color-primary) / 0.05);
+}
+
+/* Hide "No credit card required" text */
 .template-healingbuds #get-started .container > p:last-child {
     display: none !important;
 }
