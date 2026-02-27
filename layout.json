@@ -12,6 +12,7 @@
                 "subtitle": "Medical Cannabis",
                 "ctaText": "Check Eligibility",
                 "secondaryCtaText": "Sign In",
+                "secondaryCtaHref": "/auth",
                 "pillText": "Seed to Sale Traceability"
             }
         },
@@ -109,12 +110,22 @@
                 "ctaText": "Learn More About Our Standards",
                 "ctaHref": "/support"
             }
+        },
+        {
+            "type": "CTABanner",
+            "id": "get-started",
+            "config": {
+                "heading": "Ready to Get Started?",
+                "content": "Check your eligibility for medical cannabis treatment today.",
+                "ctaText": "Start Medical Assessment →",
+                "ctaHref": "/eligibility"
+            }
         }
     ],
     "footer": "FooterFull",
     "settings": {
         "wrapperClass": "template-healingbuds",
         "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600;700&display=swap",
-        "sectionPadding": "4rem/6rem"
+        "sectionPadding": "3rem/5rem"
     }
 }

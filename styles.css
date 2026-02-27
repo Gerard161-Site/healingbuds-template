@@ -4,21 +4,37 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-    --tenant-color-primary: 165 42% 23%;
-    --tenant-color-secondary: 165 42% 33%;
-    --tenant-color-accent: 42 96% 56%;
-    --tenant-color-background: 0 0% 98%;
-    --tenant-color-surface: 0 0% 100%;
-    --tenant-color-text: 165 42% 15%;
-    --tenant-color-heading: 165 42% 23%;
-    --tenant-color-border: 165 15% 90%;
-    --tenant-color-highlight: 42 96% 56%;
-    /* Yellow highlight */
+/* =========================================
+   ROOT DESIGN TOKENS
+   Lovable source: theme.css + index.css
+   Primary: deep teal #1C4F4D
+   Highlight: warm gold #E5A520
+   Background: sage-cream off-white
+   ========================================= */
 
+:root {
+    /* Core palette */
+    --tenant-color-primary: 178 48% 21%;
+    --tenant-color-secondary: 178 48% 33%;
+    --tenant-color-accent: 164 48% 53%;
+    --tenant-color-background: 150 12% 97%;
+    --tenant-color-surface: 155 10% 99%;
+    --tenant-color-text: 172 32% 20%;
+    --tenant-color-heading: 172 32% 20%;
+    --tenant-color-border: 165 18% 86%;
+
+    /* Gold highlight — the signature accent from the Lovable design */
+    --highlight: 42 90% 55%;
+    --highlight-foreground: 42 95% 12%;
+
+    /* Typography */
     --tenant-font-base: 'Plus Jakarta Sans', 'Inter', sans-serif;
     --tenant-font-heading: 'Plus Jakarta Sans', 'Inter', sans-serif;
 }
+
+/* =========================================
+   GLOBAL TEMPLATE WRAPPER
+   ========================================= */
 
 .template-healingbuds {
     font-family: var(--tenant-font-base);
@@ -29,6 +45,7 @@
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Heading typography — all headings use Jakarta */
 .template-healingbuds h1,
 .template-healingbuds h2,
 .template-healingbuds h3,
@@ -43,124 +60,467 @@
     line-height: 1.1;
 }
 
+.template-healingbuds h2 {
+    line-height: 1.15;
+}
+
 .template-healingbuds p {
     line-height: 1.7;
 }
 
-/* NavTransparent / Dark Hero overwrites */
+/* =========================================
+   NAVIGATION — Solid dark teal bar
+   Matches Lovable Header.tsx: bg-[#1A2E2A]
+   with gold separator line
+   ========================================= */
+
+.template-healingbuds nav {
+    --tenant-color-background: 168 30% 14%;
+    --tenant-color-heading: 0 0% 100%;
+    --tenant-color-text: 0 0% 100%;
+}
+
+/* Gold accent line under nav (Lovable: h-[2px] bg-[#EAB308]/60) */
+.template-healingbuds nav::after {
+    content: '';
+    display: block;
+    height: 2px;
+    background: hsla(42, 90%, 55%, 0.6);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+/* Nav CTA buttons — emerald/teal primary */
+.template-healingbuds nav .btn-primary {
+    background-color: hsl(160 50% 42%);
+    color: white;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    box-shadow: 0 4px 12px hsla(160, 50%, 42%, 0.3);
+}
+
+.template-healingbuds nav .btn-primary:hover {
+    background-color: hsl(160 50% 48%);
+    box-shadow: 0 4px 16px hsla(160, 50%, 42%, 0.5);
+}
+
+/* =========================================
+   HERO SECTION — Video background
+   Matches Lovable Index.tsx hero
+   Full-viewport, centered, gradient overlays
+   ========================================= */
+
 .template-healingbuds #hero {
     --tenant-color-heading: 0 0% 100%;
     --tenant-color-text: 0 0% 90%;
+    min-height: 100vh;
 }
 
+/* Gold highlight on the subtitle line ("Medical Cannabis") */
 .template-healingbuds #hero h1 span.block {
-    color: hsl(var(--tenant-color-highlight));
+    color: hsl(var(--highlight));
 }
 
-.template-healingbuds .btn-primary {
+/* Pill badge styling — glassmorphic with white border */
+.template-healingbuds #hero .inline-flex {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 9999px;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+/* Hero CTA — gold primary button */
+.template-healingbuds #hero .btn-primary {
+    background-color: hsl(var(--highlight));
+    color: hsl(var(--highlight-foreground));
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    box-shadow: 0 4px 16px hsla(42, 90%, 55%, 0.3);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.template-healingbuds #hero .btn-primary:hover {
+    background-color: hsl(42 90% 50%);
+    box-shadow: 0 6px 24px hsla(42, 90%, 55%, 0.4);
+    transform: translateY(-1px);
+}
+
+/* Hero secondary button — glass outline */
+.template-healingbuds #hero .btn-secondary,
+.template-healingbuds #hero a[class*="outline"],
+.template-healingbuds #hero button[class*="outline"] {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    padding: 0.75rem 2rem;
+}
+
+.template-healingbuds #hero .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* =========================================
+   HERO FEATURES — Trust badge strip
+   Compact horizontal strip below hero
+   Lovable: trust motifs with gold icons
+   ========================================= */
+
+.template-healingbuds #hero-features {
+    background-color: hsl(var(--tenant-color-surface));
+    border-top: 1px solid hsl(var(--tenant-color-border));
+    border-bottom: 1px solid hsl(var(--tenant-color-border));
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+}
+
+/* Hide heading/subtitle — these are blank spacers */
+.template-healingbuds #hero-features h2,
+.template-healingbuds #hero-features > div > p:first-of-type {
+    display: none;
+}
+
+/* Compact icon card grid */
+.template-healingbuds #hero-features .grid {
+    gap: 1rem;
+}
+
+.template-healingbuds #hero-features .grid > div {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    padding: 0.75rem 1rem;
+    text-align: center;
+}
+
+/* Icons in gold */
+.template-healingbuds #hero-features .grid > div svg {
+    color: hsl(var(--highlight));
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* Feature titles — small caps, dark text */
+.template-healingbuds #hero-features .grid > div h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: hsl(var(--tenant-color-text));
+    letter-spacing: 0.01em;
+}
+
+/* Hide descriptions since they're empty */
+.template-healingbuds #hero-features .grid > div p {
+    display: none;
+}
+
+/* =========================================
+   HOW IT WORKS — 3-step process
+   Lovable: bg-muted/30, numbered cards
+   ========================================= */
+
+.template-healingbuds #how-it-works {
+    background-color: hsl(160 14% 93% / 0.3);
+}
+
+/* Replace SVG icons with step numbers */
+.template-healingbuds #how-it-works .grid > div svg {
+    display: none;
+}
+
+.template-healingbuds #how-it-works .grid > div .w-16 {
+    background: hsla(42, 90%, 55%, 0.1);
+    border-radius: 9999px;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    transition: background 0.2s ease;
+}
+
+.template-healingbuds #how-it-works .grid > div:hover .w-16 {
+    background: hsla(42, 90%, 55%, 0.2);
+}
+
+.template-healingbuds #how-it-works .grid > div:nth-child(1) .w-16::before {
+    content: '1';
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: hsl(var(--highlight));
+}
+
+.template-healingbuds #how-it-works .grid > div:nth-child(2) .w-16::before {
+    content: '2';
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: hsl(var(--highlight));
+}
+
+.template-healingbuds #how-it-works .grid > div:nth-child(3) .w-16::before {
+    content: '3';
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: hsl(var(--highlight));
+}
+
+/* Step cards — subtle border, hover gold highlight */
+.template-healingbuds #how-it-works .grid > div {
+    background: hsl(var(--tenant-color-surface) / 0.5);
+    border: 1px solid hsl(var(--tenant-color-border) / 0.5);
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    text-align: center;
+    transition: border-color 0.2s ease;
+}
+
+.template-healingbuds #how-it-works .grid > div:hover {
+    border-color: hsla(42, 90%, 55%, 0.4);
+}
+
+/* =========================================
+   HOW-IT-WORKS CTA — Seamless inline button
+   Flows directly from the section above
+   ========================================= */
+
+.template-healingbuds #how-it-works-cta {
+    background-color: hsl(160 14% 93% / 0.3);
+    padding-top: 0 !important;
+    padding-bottom: 5rem;
+}
+
+.template-healingbuds #how-it-works-cta h2,
+.template-healingbuds #how-it-works-cta p {
+    display: none;
+}
+
+.template-healingbuds #how-it-works-cta .btn-primary {
     background-color: hsl(var(--tenant-color-primary));
     color: white;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 9999px;
 }
 
-.template-healingbuds .btn-primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px hsla(165, 42%, 23%, 0.2);
+.template-healingbuds #how-it-works-cta .btn-primary:hover {
+    background-color: hsl(175 42% 35%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px hsla(178, 48%, 21%, 0.25);
 }
 
-/* Specific styling for the 'How it works' section backgrounnd */
-.template-healingbuds #how-it-works {
-    background-color: hsl(var(--tenant-color-surface));
-}
+/* =========================================
+   COMPLIANCE — Two-column info blocks
+   Lovable: bg-primary/5, icon+text layout
+   ========================================= */
 
 .template-healingbuds #compliance {
+    background-color: hsl(178 48% 21% / 0.05);
+    border-top: 1px solid hsl(178 48% 21% / 0.1);
+    border-bottom: 1px solid hsl(178 48% 21% / 0.1);
+}
+
+/* Hide heading/subtitle spacers */
+.template-healingbuds #compliance h2,
+.template-healingbuds #compliance > div > p:first-of-type {
+    display: none;
+}
+
+/* Card styling — subtle sage background */
+.template-healingbuds #compliance .grid > div {
+    background-color: hsl(178 48% 21% / 0.05);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: none;
+    box-shadow: none;
+}
+
+/* Icons — teal primary color */
+.template-healingbuds #compliance .grid > div svg {
+    color: hsl(var(--tenant-color-primary));
+    width: 1.75rem;
+    height: 1.75rem;
+}
+
+/* =========================================
+   COMPLIANCE CTA — Outline style button
+   Flows from compliance section
+   ========================================= */
+
+.template-healingbuds #compliance-cta {
+    background-color: hsl(178 48% 21% / 0.05);
+    padding-top: 0 !important;
+    padding-bottom: 5rem;
+}
+
+.template-healingbuds #compliance-cta h2,
+.template-healingbuds #compliance-cta p {
+    display: none;
+}
+
+/* Outline button variant */
+.template-healingbuds #compliance-cta .btn-primary {
+    background-color: transparent;
+    color: hsl(var(--tenant-color-text));
+    border: 1px solid hsl(var(--tenant-color-border));
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.5rem 1.25rem;
+    transition: all 0.2s ease;
+}
+
+.template-healingbuds #compliance-cta .btn-primary:hover {
+    background-color: hsl(var(--tenant-color-primary) / 0.05);
+    border-color: hsl(var(--tenant-color-primary) / 0.3);
+    box-shadow: none;
+    transform: none;
+}
+
+/* =========================================
+   GET STARTED — Final CTA section
+   Lovable: clean centered CTA with icon
+   ========================================= */
+
+.template-healingbuds #get-started {
     background-color: hsl(var(--tenant-color-background));
 }
 
-.template-healingbuds #compliance .grid>div {
-    background-color: hsla(165, 42%, 23%, 0.05);
-    /* very light sage for cards */
+.template-healingbuds #get-started h2 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    color: hsl(var(--tenant-color-heading));
 }
 
+.template-healingbuds #get-started p {
+    color: hsl(165 12% 42%);
+    font-size: 1.125rem;
+}
+
+.template-healingbuds #get-started .btn-primary {
+    background-color: hsl(var(--tenant-color-primary));
+    color: white;
+    border-radius: 0.5rem;
+    font-size: 1.125rem;
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.template-healingbuds #get-started .btn-primary:hover {
+    background-color: hsl(175 42% 35%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px hsla(178, 48%, 21%, 0.25);
+}
+
+/* =========================================
+   FOOTER — Dark teal with white text
+   Matches Lovable Footer.tsx:
+   bg-section-color (#1C4F4D), white text,
+   gold hover on links
+   ========================================= */
+
 .template-healingbuds footer {
-    background-color: hsla(165, 42%, 23%, 1) !important;
+    --tenant-color-background: 178 48% 21%;
+    --tenant-color-heading: 0 0% 100%;
+    --tenant-color-text: 0 0% 100%;
+    background-color: hsl(178 48% 21%) !important;
     color: white !important;
 }
 
 .template-healingbuds footer h1,
 .template-healingbuds footer h2,
 .template-healingbuds footer h3,
-.template-healingbuds footer h4,
+.template-healingbuds footer h4 {
+    color: hsl(0 0% 100% / 0.9) !important;
+    font-size: 0.875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
 .template-healingbuds footer a {
-    color: white !important;
+    color: hsl(0 0% 100% / 0.6) !important;
+    transition: all 0.2s ease;
+    font-size: 0.875rem;
 }
 
 .template-healingbuds footer a:hover {
-    color: hsla(42, 96%, 56%, 1) !important;
+    color: white !important;
+    transform: translateX(2px);
 }
 
-/* ========================================= */
-/* Structural Layout Overrides */
-/* ========================================= */
-
-/* 1. ValueProps: Convert svgs into numbers! */
-.template-healingbuds #how-it-works .grid>div svg {
-    display: none;
+/* Footer border divider — subtle white line */
+.template-healingbuds footer .border-t,
+.template-healingbuds footer .border-b {
+    border-color: hsl(0 0% 100% / 0.1) !important;
 }
 
-.template-healingbuds #how-it-works .grid>div:nth-child(1) .w-16::before {
-    content: '1';
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: hsl(var(--tenant-color-highlight));
+/* Footer copyright text */
+.template-healingbuds footer p {
+    color: hsl(0 0% 100% / 0.5) !important;
+    font-size: 0.75rem;
 }
 
-.template-healingbuds #how-it-works .grid>div:nth-child(2) .w-16::before {
-    content: '2';
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: hsl(var(--tenant-color-highlight));
+/* =========================================
+   GLOBAL BUTTON DEFAULTS
+   ========================================= */
+
+.template-healingbuds .btn-primary {
+    background-color: hsl(var(--tenant-color-primary));
+    color: white;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0.5rem;
+    font-weight: 600;
 }
 
-.template-healingbuds #how-it-works .grid>div:nth-child(3) .w-16::before {
-    content: '3';
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: hsl(var(--tenant-color-highlight));
+.template-healingbuds .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px hsla(178, 48%, 21%, 0.2);
 }
 
-/* 2. Seamless CTABanners for inline buttons */
-.template-healingbuds #how-it-works-cta,
-.template-healingbuds #compliance-cta {
-    padding-top: 0 !important;
-    padding-bottom: 6rem;
+/* =========================================
+   ANIMATIONS — Subtle fade-ins
+   ========================================= */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-.template-healingbuds #how-it-works-cta {
-    background-color: hsl(var(--tenant-color-surface));
+.template-healingbuds section {
+    animation: fadeInUp 0.6s ease-out;
 }
 
-.template-healingbuds #compliance-cta {
-    background-color: hsl(var(--tenant-color-background));
-}
+/* =========================================
+   RESPONSIVE REFINEMENTS
+   ========================================= */
 
-.template-healingbuds #how-it-works-cta h2,
-.template-healingbuds #how-it-works-cta p,
-.template-healingbuds #compliance-cta h2,
-.template-healingbuds #compliance-cta p {
-    display: none;
-}
+@media (max-width: 768px) {
+    .template-healingbuds #hero-features .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
-/* 3. Style the secondary "Learn More" button as an outline */
-.template-healingbuds #compliance-cta .btn-primary {
-    background-color: transparent;
-    color: hsl(var(--tenant-color-text));
-    border: 1px solid hsl(var(--tenant-color-border));
-}
+    .template-healingbuds #how-it-works .grid > div {
+        padding: 1.25rem;
+    }
 
-.template-healingbuds #compliance-cta .btn-primary:hover {
-    background-color: hsl(var(--tenant-color-primary) / 0.05);
-    box-shadow: none;
-    transform: none;
+    .template-healingbuds #get-started h2 {
+        font-size: 1.5rem;
+    }
 }

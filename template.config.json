@@ -1,19 +1,24 @@
 {
-    "id": "southhealing",
-    "slug": "southhealing",
-    "name": "South Healing",
-    "description": "Pharmaceutical-grade medical cannabis template with a clean, sage/teal aesthetic and video hero.",
+    "id": "healingbuds",
+    "slug": "healingbuds",
+    "name": "Healing Buds",
+    "description": "Pharmaceutical-grade medical cannabis template with deep teal and gold accents. Clean, trustworthy design with video hero, eligibility steps, and compliance blocks.",
     "category": "medical",
     "tags": [
         "medical",
+        "pharmaceutical",
         "clean",
         "trust",
-        "video"
+        "video",
+        "teal",
+        "gold"
     ],
     "features": [
-        "Video Hero",
-        "Compliance Blocks",
-        "Eligibility Steps"
+        "Video Hero with gold highlight",
+        "Trust badge strip",
+        "3-step eligibility flow",
+        "Compliance info blocks",
+        "Dark teal footer with gold accents"
     ],
     "author": "BudStacks Platform",
     "version": "1.0.0"
