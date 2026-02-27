@@ -16,9 +16,9 @@
     "features": [
         "Video Hero with gold highlight",
         "Trust badge strip",
-        "3-step eligibility flow",
+        "3-step numbered eligibility flow",
         "Compliance info blocks",
-        "Dark teal footer with gold accents"
+        "Dark teal footer"
     ],
     "author": "BudStacks Platform",
     "version": "1.0.0"

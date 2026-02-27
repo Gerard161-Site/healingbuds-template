@@ -87,7 +87,12 @@
     "pageContent": {
         "homeHeroTitle": "Pharmaceutical-Grade",
         "homeHeroSubtitle": "Medical Cannabis",
-        "homeHeroDescription": "From cultivation to delivery, every product is tracked and verified. Access quality-controlled, lab-tested medical cannabis with complete transparency."
+        "homeHeroDescription": "From cultivation to delivery, every product is tracked and verified. Access quality-controlled, lab-tested medical cannabis with complete transparency.",
+        "home": {
+            "heroHeight": "full",
+            "heroOverlayStyle": "dark",
+            "heroOverlayOpacity": 55
+        }
     },
     "navigation": {
         "links": [
@@ -113,16 +118,17 @@
             }
         ],
         "cta": {
-            "label": "Connect",
-            "href": "/auth"
-        },
-        "cta2": {
             "label": "Check Eligibility",
             "href": "/eligibility"
+        },
+        "cta2": {
+            "label": "Connect",
+            "href": "/auth"
         },
         "showCart": false
     },
     "footer": {
+        "tagline": "Pharmaceutical-grade medical cannabis for qualifying patients. EU GMP certified with full seed-to-sale traceability.",
         "copyright": "© {year} {businessName}. All rights reserved.",
         "disclaimer": "Pharmaceutical-grade medical cannabis for qualifying patients. EU GMP certified with full seed-to-sale traceability.",
         "sections": [

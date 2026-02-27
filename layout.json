@@ -9,11 +9,7 @@
                 "textAlign": "center",
                 "videoUrl": "assets/hero-video.mp4",
                 "title": "Pharmaceutical-Grade",
-                "subtitle": "Medical Cannabis",
-                "ctaText": "Check Eligibility",
-                "secondaryCtaText": "Sign In",
-                "secondaryCtaHref": "/auth",
-                "pillText": "Seed to Sale Traceability"
+                "subtitle": "Medical Cannabis"
             }
         },
         {
@@ -25,22 +21,22 @@
                 "items": [
                     {
                         "title": "EU GMP Certified",
-                        "description": "",
+                        "description": " ",
                         "icon": "Award"
                     },
                     {
                         "title": "Lab Tested",
-                        "description": "",
+                        "description": " ",
                         "icon": "Shield"
                     },
                     {
                         "title": "Secure & Compliant",
-                        "description": "",
+                        "description": " ",
                         "icon": "Check"
                     },
                     {
                         "title": "Discreet Delivery",
-                        "description": "",
+                        "description": " ",
                         "icon": "Truck"
                     }
                 ]
@@ -76,9 +72,8 @@
             "id": "how-it-works-cta",
             "config": {
                 "heading": " ",
-                "content": " ",
-                "ctaText": "Start Your Assessment →",
-                "ctaHref": "/eligibility"
+                "subtitle": " ",
+                "ctaText": "Start Your Assessment →"
             }
         },
         {
@@ -106,9 +101,8 @@
             "id": "compliance-cta",
             "config": {
                 "heading": " ",
-                "content": " ",
-                "ctaText": "Learn More About Our Standards",
-                "ctaHref": "/support"
+                "subtitle": " ",
+                "ctaText": "Learn More About Our Standards"
             }
         },
         {
@@ -116,9 +110,8 @@
             "id": "get-started",
             "config": {
                 "heading": "Ready to Get Started?",
-                "content": "Check your eligibility for medical cannabis treatment today.",
-                "ctaText": "Start Medical Assessment →",
-                "ctaHref": "/eligibility"
+                "subtitle": "Check your eligibility for medical cannabis treatment today.",
+                "ctaText": "Start Medical Assessment →"
             }
         }
     ],
@@ -126,6 +119,6 @@
     "settings": {
         "wrapperClass": "template-healingbuds",
         "googleFontsUrl": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Archivo+Narrow:wght@400;500;600;700&display=swap",
-        "sectionPadding": "3rem/5rem"
+        "sectionPadding": "3rem/4rem"
     }
 }
