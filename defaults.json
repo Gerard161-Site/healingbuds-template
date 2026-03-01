@@ -98,19 +98,19 @@
         "links": [
             {
                 "label": "Research",
-                "href": "/research"
+                "href": "/conditions"
             },
             {
                 "label": "The Wire",
-                "href": "/wire"
+                "href": "/the-wire"
             },
             {
                 "label": "Eligibility",
-                "href": "/eligibility"
+                "href": "/consultation"
             },
             {
                 "label": "Products",
-                "href": "/shop"
+                "href": "/products"
             },
             {
                 "label": "Support",
@@ -119,11 +119,11 @@
         ],
         "cta": {
             "label": "Check Eligibility",
-            "href": "/eligibility"
+            "href": "/consultation"
         },
         "cta2": {
             "label": "Connect",
-            "href": "/auth"
+            "href": "/login"
         },
         "showCart": false
     },
@@ -137,19 +137,19 @@
                 "links": [
                     {
                         "label": "Check Eligibility",
-                        "href": "/eligibility"
+                        "href": "/consultation"
                     },
                     {
                         "label": "Dispensary",
-                        "href": "/shop"
+                        "href": "/products"
                     },
                     {
                         "label": "Patient Portal",
-                        "href": "/auth"
+                        "href": "/login"
                     },
                     {
                         "label": "The Wire",
-                        "href": "/wire"
+                        "href": "/the-wire"
                     }
                 ]
             },
@@ -158,7 +158,7 @@
                 "links": [
                     {
                         "label": "FAQ",
-                        "href": "/support"
+                        "href": "/faq"
                     },
                     {
                         "label": "Contact Us",
@@ -166,7 +166,7 @@
                     },
                     {
                         "label": "Shipping Info",
-                        "href": "/shipping"
+                        "href": "/support"
                     }
                 ]
             },
