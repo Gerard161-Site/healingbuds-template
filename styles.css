@@ -38,16 +38,6 @@
     -webkit-font-smoothing: antialiased;
 }
 
-/* Fixed nav: push main content below the 72px header */
-.template-healingbuds main {
-    padding-top: 72px;
-}
-
-/* Hero section: pull back up behind the fixed nav for full-bleed */
-.template-healingbuds #hero {
-    margin-top: -72px;
-}
-
 .template-healingbuds h1,
 .template-healingbuds h2,
 .template-healingbuds h3,
@@ -69,6 +59,18 @@
     padding: 0 !important;
 }
 
+/* Gold accent line at top of nav */
+.template-healingbuds nav::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, hsl(var(--hb-gold)), hsla(42, 90%, 55%, 0.4));
+    z-index: 60;
+}
+
 .template-healingbuds nav > div {
     max-width: 100% !important;
     border-radius: 0 !important;
@@ -80,12 +82,35 @@
     box-shadow: none !important;
 }
 
-/* Gold accent line under nav */
-.template-healingbuds nav > div::after {
+/* Active nav link — glass pill with gold dot */
+.template-healingbuds nav a[data-active] {
+    background: rgba(255, 255, 255, 0.1) !important;
+    color: white !important;
+    position: relative;
+}
+
+.template-healingbuds nav a[data-active]::after {
     content: '';
-    display: block;
-    height: 2px;
-    background: hsla(42, 90%, 55%, 0.6);
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: hsl(var(--hb-gold));
+}
+
+/* CTA button in nav — gold */
+.template-healingbuds nav a[data-nav-cta] {
+    background-color: hsl(var(--hb-gold)) !important;
+    background: hsl(var(--hb-gold)) !important;
+    color: hsl(var(--hb-gold-fg)) !important;
+}
+
+.template-healingbuds nav a[data-nav-cta]:hover {
+    background-color: hsl(var(--hb-gold-hover)) !important;
+    background: hsl(var(--hb-gold-hover)) !important;
 }
 
 /* Primary CTA in nav — make it solid green instead of glass */
