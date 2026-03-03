@@ -1,7 +1,7 @@
 {
     "template": "healingbuds",
     "slug": "healingbuds",
-    "logoPath": "assets/hb-logo-teal.png",
+    "logoPath": "assets/hb-logo-white-full.png",
     "heroImagePath": null,
     "heroVideoPath": "assets/hero-video.mp4",
     "primaryColor": "178 48% 21%",
@@ -97,35 +97,41 @@
     "navigation": {
         "links": [
             {
+                "label": "About Us",
+                "href": "/about",
+                "icon": "Users"
+            },
+            {
                 "label": "Research",
-                "href": "/conditions"
+                "href": "/conditions",
+                "icon": "FileText"
             },
             {
                 "label": "The Wire",
-                "href": "/the-wire"
+                "href": "/the-wire",
+                "icon": "Newspaper"
             },
             {
                 "label": "Eligibility",
-                "href": "/consultation"
+                "href": "/consultation",
+                "icon": "ClipboardCheck"
             },
             {
-                "label": "Products",
-                "href": "/products"
+                "label": "Strains",
+                "href": "/products",
+                "icon": "Leaf"
             },
             {
                 "label": "Support",
-                "href": "/support"
+                "href": "/support",
+                "icon": "Headphones"
             }
         ],
         "cta": {
             "label": "Check Eligibility",
             "href": "/consultation"
         },
-        "cta2": {
-            "label": "Connect",
-            "href": "/login"
-        },
-        "showCart": false
+        "showCart": true
     },
     "footer": {
         "tagline": "Pharmaceutical-grade medical cannabis for qualifying patients. EU GMP certified with full seed-to-sale traceability.",

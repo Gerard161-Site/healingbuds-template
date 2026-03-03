@@ -38,6 +38,16 @@
     -webkit-font-smoothing: antialiased;
 }
 
+/* Fixed nav: push main content below the 72px header */
+.template-healingbuds main {
+    padding-top: 72px;
+}
+
+/* Hero section: pull back up behind the fixed nav for full-bleed */
+.template-healingbuds #hero {
+    margin-top: -72px;
+}
+
 .template-healingbuds h1,
 .template-healingbuds h2,
 .template-healingbuds h3,
